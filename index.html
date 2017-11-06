@@ -237,7 +237,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="enningxie">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/xz01.jpg">
+      <meta itemprop="image" content="/images/xz.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -302,125 +302,17 @@
 
       
         
-          
-            <h3 id="GitHub入门与实践"><a href="#GitHub入门与实践" class="headerlink" title="GitHub入门与实践"></a>GitHub入门与实践</h3><h4 id="第一章-欢迎来到GitHub的世界"><a href="#第一章-欢迎来到GitHub的世界" class="headerlink" title="第一章　欢迎来到GitHub的世界"></a>第一章　欢迎来到GitHub的世界</h4><h5 id="1-1-什么是GitHub"><a href="#1-1-什么是GitHub" class="headerlink" title="1.1 什么是GitHub"></a>1.1 什么是GitHub</h5><p>GitHub是为开发者提供Git仓库的托管服务。这是一个让开发者与朋友、同事、同学、及陌生人共享代码的完美场所。</p>
+          <h3 id="GitHub入门与实践"><a href="#GitHub入门与实践" class="headerlink" title="GitHub入门与实践"></a>GitHub入门与实践</h3><h4 id="第一章-欢迎来到GitHub的世界"><a href="#第一章-欢迎来到GitHub的世界" class="headerlink" title="第一章　欢迎来到GitHub的世界"></a>第一章　欢迎来到GitHub的世界</h4><h5 id="1-1-什么是GitHub"><a href="#1-1-什么是GitHub" class="headerlink" title="1.1 什么是GitHub"></a>1.1 什么是GitHub</h5><p>GitHub是为开发者提供Git仓库的托管服务。这是一个让开发者与朋友、同事、同学、及陌生人共享代码的完美场所。</p>
 <blockquote>
 <p><strong>GitHub与Git的区别</strong><br>首先，GitHub与Git是完全不同的两个东西。<br>在Git中，开发者将源代码存入名为“Git仓库”的资料库中并加以使用。而GitHub则是在网络上提供Git仓库的一项服务。也就是说GitHub上公开的软件源代码全部由Git进行管理。</p>
 </blockquote>
-<h5 id="1-2-使用GitHub会带来哪些变化"><a href="#1-2-使用GitHub会带来哪些变化" class="headerlink" title="1.2 使用GitHub会带来哪些变化"></a>1.2 使用GitHub会带来哪些变化</h5><p>Pull Request功能：是指开发者在本地对源码进行修改后，向GitHub中托管的Git仓库请求合并的功能。</p>
-<p>开发者可以在Pull Request上通过评论交流。通过这个功能，开发者可以轻松更改源码，并公开更改的细节，然后向仓库提交合并请求。而且，如果请求的更改与项目的初衷相违背，也可以选择拒绝合并。</p>
-<p>GitHub的Pull Request不但能轻松查看源代码的前后差别，还可以对指定的一行代码进行评论。</p>
-<p>任务管理和BUG报告可以通过Issue进行交互。</p>
-<h5 id="1-3-GitHub提供的主要功能"><a href="#1-3-GitHub提供的主要功能" class="headerlink" title="1.3 GitHub提供的主要功能"></a>1.3 GitHub提供的主要功能</h5><ul>
-<li><p>Git仓库<br>一般情况下，我们可以免费建立任意个GitHub提供的Git仓库。但如果需要建立只对特定人或只对自己公开的私有仓库，则需要付费。</p>
-</li>
-<li><p>Organization<br>通常来说，个人使用时只要使用个人账户就足够了，但如果是公司，建议使用Organization账户。它的优点在于可以统一管理账户和权限，还能统一支付一些费用。如果只使用公开仓库，是可以免费创建Organization账户的。</p>
-</li>
-<li><p>Issue<br>Issue功能，是将一个任务或问题分配给一个Issue进行追踪和管理的功能。可以像BUG管理系统一样使用。在GitHub上，每当我们Pull Request的同时，往往都会创建一个Issue。每一个功能更改或修正都对应一个Issue，讨论或修改都以这个Issue为中心进行。只要查看这个Issue，就能知道和这个更改相关的一切信息，并以此进行管理。在Git的提交信息中写上Issue的ID（例如“#7”），GitHub就会自动生成从Issue到对应提交的链接。另外，只要按照特定的格式描述提交信息，还可以关闭Issue。</p>
-</li>
-<li><p>Wiki<br>通过Wiki功能，任何人都能随时对一篇文章进行更改并保存，因此可以多人共同完成一篇文章。该功能常用于编写开发文档或手册中。</p>
-</li>
-<li><p>Pull Request　　<br>开发者向GitHub的仓库推送更改或功能添加后，可以通过Pull Request功能向别人的仓库提出申请，请求对方合并。Pull Request送出后，目标仓库的管理者等人将能够查看Pull Request的内容及其中包含的代码更改。同时，GitHub还提供了对Pull Request和源代码前后差别进行讨论的功能。通过此功能，可以以行为单位对源代码添加评论，让程序员之间可以高效的交流。</p>
-</li>
-</ul>
-<h4 id="第二章-Git的导入"><a href="#第二章-Git的导入" class="headerlink" title="第二章　Git的导入"></a>第二章　Git的导入</h4><p>Git仓库管理功能是GitHub的核心。</p>
-<h5 id="2-1-版本管理"><a href="#2-1-版本管理" class="headerlink" title="2.1 版本管理"></a>2.1 版本管理</h5><p>Git属于分散型版本管理系统，是为版本管理而设计的软件。</p>
-<p>GitHub将仓库Fork给了每一个用户，Fork就是将GitHub的某个特定仓库复制到自己的账户下。Fork出的仓库与原仓库是两个不同的仓库，开发者可以随意编辑。</p>
-<p>分散型拥有多个仓库，由于本地的开发环境中就有仓库，所以开发者不必连接远程仓库就可以进行开发。</p>
-<h5 id="2-2-Git的安装"><a href="#2-2-Git的安装" class="headerlink" title="2.2 Git的安装"></a>2.2 Git的安装</h5><p>该部分请自行google。</p>
-<h5 id="2-3-初始设置"><a href="#2-3-初始设置" class="headerlink" title="2.3 初始设置"></a>2.3 初始设置</h5><ul>
-<li>设置姓名和邮箱地址  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --<span class="keyword">global</span> user.name <span class="string">"Firstname Lastname"</span></div><div class="line">$ git config --<span class="keyword">global</span> user.email <span class="string">"your_email@example.com"</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这个命令，会在“~/.gitconfig”中以如下的形式输出设置文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[user]</div><div class="line">  name = Firstname Lastname</div><div class="line">  email = your_email@example.com</div></pre></td></tr></table></figure></p>
-<p>想更改这些信息时，可以直接编辑这个设置文件。这里设置的姓名和邮箱地址会用在Git的提交日志中。由于在GitHub上公开仓库时，这里的姓名和邮箱地址也会随着日志一同被公开，所以请不要使用不便公开的隐私信息。</p>
-<ul>
-<li>提高代码可读性<br>将<code>color.ui</code>设置为<code>auto</code>可以让命令的输出拥有更高的可读性。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --<span class="keyword">global</span> color.ui auto</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><code>~/.gitconfig</code>中会增加下面一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[color]</div><div class="line">ui = auto</div></pre></td></tr></table></figure></p>
-<p>这样一来，各种命令的输出就会变得更容易分辨。</p>
-<h4 id="第三章-使用GitHub的前期准备"><a href="#第三章-使用GitHub的前期准备" class="headerlink" title="第三章 使用GitHub的前期准备"></a>第三章 使用GitHub的前期准备</h4><h5 id="3-1-使用前的准备"><a href="#3-1-使用前的准备" class="headerlink" title="3.1 使用前的准备"></a>3.1 使用前的准备</h5><ul>
-<li><p>创建账户<br>自行创建。</p>
-</li>
-<li><p>设置SSH Key<br>GitHub上连接已有仓库时的认证，是通过使用了SSH的公开密匙认证方式进行的。<br>创建SSH Key:<code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code>,<code>your_email@example.com</code>的部分请改成你在创建账户时用的邮箱地址。<br><code>id_rsa</code>文件是私有密钥，<code>id_rsa.pub</code>是公开密钥。</p>
-</li>
-<li><p>添加公开密钥<br>在GitHub中添加公开密钥，今后就可以用私有密钥进行认证了。<br>完成以上设置之后，就可以用手中的私人密钥与GitHub进行认证和通信了。  </p>
-</li>
-</ul>
-<h5 id="3-2-其它说明"><a href="#3-2-其它说明" class="headerlink" title="3.2 其它说明"></a>3.2 其它说明</h5><ul>
-<li><p><code>.gitignore</code>文件<br>帮助我们把不需要在Git仓库中进行版本管理的文件记录在<code>.gitignore</code>文件中，省去了每次根据框架进行设置的麻烦。</p>
-</li>
-<li><p><code>README.md</code>文件<br><code>README.md</code>文件的内容会自动显示在首页当中。因此，人们一般会在这个文件中标明本仓库所包含的软件的概要、使用流程、许可协议等信息。</p>
-</li>
-<li><p><code>git clone</code><br>clone已有的仓库源代码。</p>
-</li>
-<li><p>编写代码</p>
-</li>
-<li><p>提交<br>通过<code>git add</code>命令将文件加入暂存区，再通过<code>git commit</code>命令提交。<br>添加成功后，可以通过<code>git log</code>查看提交日志。</p>
-</li>
-<li><p>进行push<br>最后进行<code>git push</code>之后，GitHub上的仓库就会被更新。</p>
-</li>
-</ul>
-<h4 id="第4章-通过实际操作学习Git"><a href="#第4章-通过实际操作学习Git" class="headerlink" title="第4章 通过实际操作学习Git"></a>第4章 通过实际操作学习Git</h4><h5 id="4-1-基本操作"><a href="#4-1-基本操作" class="headerlink" title="4.1 基本操作"></a>4.1 基本操作</h5><ul>
-<li><p><code>git init</code>初始化仓库<br>要使用Git进行版本管理，必须先初始化仓库。Git使用<code>git init</code>命令进行初始化仓库操作。如果初始化成功，当前目录下就会生成<code>.git</code>目录。这个目录里存储着管理当前内容所需的仓库数据。</p>
-</li>
-<li><p><code>git status</code>查看仓库的状态<br><code>git status</code>命令用于显示Git仓库的状态。</p>
-</li>
-<li><p><code>git add</code>向暂存区中添加文件<br>要想文件成为Git仓库的管理对象，就需要用<code>git add</code>命令将其加入暂存区中，暂存区是提交之前的一个临时区域。</p>
-</li>
-<li><p><code>git commit</code>保存仓库的历史记录<br><code>git commit</code>命令可以将当前暂存区中的文件实际保存到仓库的历史记录中。通过这些记录，我们就可以在工作树中复原文件。<br><code>git commit -m &#39;message&#39;</code>其中<code>-m</code>参数后面记录了提交信息。</p>
-</li>
-<li><p><code>git log</code>查看提交后的日志<br><code>git log</code>命令可以查看以往仓库中提交的日志。包括可以查看什么人在什么时候进行了提交或合并，以及操作前后有怎样的差别。<br>显示文件的改动：如果想查看提交所带来的改动，可以加上<code>-p</code>参数，文件的前后差别就会显示在提交信息之后。<br>只显示指定目录、文件的日志： 只要在<code>git log</code>命令之后加上目录名，便会只显示该目录下的日志。如果加的是文件名，就会只显示与该文件相关的日志。<br><code>git log -p README.md</code>就可以只查看README.md文件的提交日志以及提交前后的差别。</p>
-</li>
-<li><p><code>git diff</code>查看更改前后的差别<br><code>git diff</code>命令可以查看工作树、暂存区、最新提交之间的差别。<br>查看与最新提交的差别：<code>git diff HEAD</code>。<br>不妨养成一个好习惯：在执行<code>git commit</code>命令之前，先执行<code>git diff HEAD</code>命令，查看本次提交和上次提交之间有什么差别，等确认完毕之后再进行提交。这里的<code>HEAD</code>是指当前分支中最新一次提交的指针。</p>
-</li>
-</ul>
-<h5 id="4-2-分支的操作"><a href="#4-2-分支的操作" class="headerlink" title="4.2 分支的操作"></a>4.2 分支的操作</h5><p>在进行多个并行作业时，我们会用到分支。在这类并行开发的过程中，往往同时存在多个最新代码状态。</p>
-<p>不同分支中，可以同时进行完全不同的作业。等该分支的作业完成之后再与master分支合并。</p>
-<p>通过灵活运用分支，可以让多人同时高效的进行并行开发。</p>
-<ul>
-<li><p><code>git branch</code>显示分支一览表<br><code>git branch</code>命令可以将分支名列表显示，同时可以确认当前所在分支。</p>
-</li>
-<li><p><code>git checkout -b</code>创建、切换分支<br>实际上<code>git branch</code>和<code>git checkout</code>命令也能收到同样的效果。<br><code>git checkout -</code>切换回上一个分支。</p>
-</li>
-<li><p>特性分支<br>当今大部分工作流程中都用到了特性（topic）分支。<br>特性分支顾名思义，是集中实现单一特性（主题），除此之外不进行任何作业的分支。在日常开发中，往往会创建数个特性分支，同时在此之外再保留一个随时可以发布软件的稳定分支。稳定分支的角色通常由master分支担当。<br>基于特定主题的作业在特性分支中进行，主题完成后再与master分支合并。</p>
-</li>
-<li><p><code>git merge</code>合并分支<br>为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交。因此，在合并时加上<code>--no--ff</code>参数。</p>
-</li>
-<li><p><code>git log --graph</code>以图表形式查看分支</p>
-</li>
-</ul>
-<h5 id="4-3-更改提交的操作"><a href="#4-3-更改提交的操作" class="headerlink" title="4.3 更改提交的操作"></a>4.3 更改提交的操作</h5><ul>
-<li><p><code>git reset</code>回溯历史版本<br>要让仓库的HEAD、暂存区、当前工作树回溯到指定状态，需要用到<code>git reset --hard hash</code>命令。只要提供目标时间点的哈希值，就可以完全恢复至该时间点的状态。</p>
-</li>
-<li><p><code>git log</code>只能查看以当前状态为终点的历史日志。<br><code>git reflog</code>查看当前仓库的操作日志</p>
-</li>
-<li><p><code>git commit --amend</code>修改提交信息。</p>
-</li>
-<li><p><code>git rebase -i</code><br>在合并特性分支之前，如果发现已提交的内容中有些许拼写错误等，不妨提交一个修改，然后将这个修改包含到前一个提交中，压缩成一个历史记录。</p>
-</li>
-<li><p><code>git commit -am</code>可以实现<code>git add</code>和<code>git commit -m</code>两步操作。</p>
-</li>
-</ul>
-<h5 id="4-4-推送至远程仓库"><a href="#4-4-推送至远程仓库" class="headerlink" title="4.4 推送至远程仓库"></a>4.4 推送至远程仓库</h5><ul>
-<li><p><code>git remote add</code>添加远程仓库<br><code>git remote add origin git@github.com:enningxie/test.git</code></p>
-</li>
-<li><p><code>git push</code>推送至远程仓库<br>如果想将当前分支下本地仓库中的内容推送给远仓库，需要用到<code>git push</code>命令。<br><code>git push -u origin master</code>像这样执行<code>git push</code>命令，当前分支的内容就会被推送给远程仓库origin的master分支，<code>-u</code>参数可以在推送的同时，将origin仓库的master分支设置为本地仓库当前分支的upstream（上游）。添加了这个参数，将来运行<code>git pull</code>命令从远程仓库获取内容时，本地仓库的这个分支就可以直接从origin的master分支获取内容，省去了另外添加参数的麻烦。</p>
-</li>
-</ul>
-<h5 id="4-5-从远程仓库获取"><a href="#4-5-从远程仓库获取" class="headerlink" title="4.5 从远程仓库获取"></a>4.5 从远程仓库获取</h5><ul>
-<li><p><code>git clone</code>获取远程仓库<br>执行<code>git clone</code>命令后我们会默认处于master分支下，同时系统会自动将origin设置成该远程仓库的标识符。</p>
-</li>
-<li><p><code>git branch -a</code>命令查看当前分支的相关信息。<br><code>-a</code>参数可以同时显示本地仓库和远程仓库的分支信息。</p>
-</li>
-<li><p>获取远程的new_branch分支<br><code>git checkout -b new origin/new_branch</code>其中<code>-b</code>参数是本地仓库中新建分支名称。</p>
-</li>
-<li><p><code>git pull</code>获取最新的远程仓库分支<br>为了减少冲突情况的发生，建议频繁进行<code>push</code>和<code>pull</code>操作。</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/06/GitHub入门与实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -472,7 +364,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="enningxie">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/xz01.jpg">
+      <meta itemprop="image" content="/images/xz.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -619,7 +511,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/xz01.jpg"
+                src="/images/xz.jpg"
                 alt="enningxie" />
             
               <p class="site-author-name" itemprop="name">enningxie</p>
