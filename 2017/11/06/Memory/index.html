@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2017_10_23 sudo su - ennnigxie  # ‘-‘参数，切换用户的同时将其环境变量同时应用。’-l’参数也是这样的。  文件的压缩与解压(gzip/tar)gzip test.txt # 压缩文件gzip -d test.txt.gz # 解压文件# tar打包压缩，通常有两种格式，分别以.tar.bz2和.tar.gz为后缀tar jcvf test.tar.bz2 te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memory">
+<meta property="og:url" content="http://www.enningxie.com/2017/11/06/Memory/index.html">
+<meta property="og:site_name" content="Coolixz">
+<meta property="og:description" content="2017_10_23 sudo su - ennnigxie  # ‘-‘参数，切换用户的同时将其环境变量同时应用。’-l’参数也是这样的。  文件的压缩与解压(gzip/tar)gzip test.txt # 压缩文件gzip -d test.txt.gz # 解压文件# tar打包压缩，通常有两种格式，分别以.tar.bz2和.tar.gz为后缀tar jcvf test.tar.bz2 te">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.enningxie.com/2017/11/06/Memory/">
+<meta property="og:updated_time" content="2017-11-06T07:57:04.360Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Memory">
+<meta name="twitter:description" content="2017_10_23 sudo su - ennnigxie  # ‘-‘参数，切换用户的同时将其环境变量同时应用。’-l’参数也是这样的。  文件的压缩与解压(gzip/tar)gzip test.txt # 压缩文件gzip -d test.txt.gz # 解压文件# tar打包压缩，通常有两种格式，分别以.tar.bz2和.tar.gz为后缀tar jcvf test.tar.bz2 te">
+<meta name="twitter:image" content="http://www.enningxie.com/2017/11/06/Memory/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.enningxie.com/2017/11/06/Memory/"/>
+
+
+
+
+
+  <title>Memory | Coolixz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coolixz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">enningxie</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/06/Memory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Memory</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:55:42+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="2017-10-23"><a href="#2017-10-23" class="headerlink" title="2017_10_23"></a>2017_10_23</h3><ul>
+<li><p><code>sudo su - ennnigxie</code>  # ‘-‘参数，切换用户的同时将其环境变量同时应用。’-l’参数也是这样的。</p>
+</li>
+<li><p>文件的压缩与解压(gzip/tar)<br><code>gzip test.txt</code> # 压缩文件<br><code>gzip -d test.txt.gz</code> # 解压文件<br># <code>tar</code>打包压缩，通常有两种格式，分别以<code>.tar.bz2</code>和<code>.tar.gz</code>为后缀<br><code>tar jcvf test.tar.bz2 test.txt</code><br># 打包并调用<code>bzip2</code>压缩为<code>bz2</code>格式的文件<br><code>tar jxvf test.tar.bz2</code> # 解压<code>bz2</code> 文件<br><code>tar zcvf test.tar.gz test.txt</code> # 打包并调用<code>gzip</code>压缩为<code>gz</code>格式的文件<br><code>tar zxvf test.tar.gz</code> # 解压<code>gz</code>文件</p>
+</li>
+</ul>
+<hr>
+<h3 id="2017-10-24"><a href="#2017-10-24" class="headerlink" title="2017_10_24"></a>2017_10_24</h3><ul>
+<li><code>%f</code> 表示按浮点数的格式输出</li>
+<li><code>%e</code> 表示按指数形式的浮点数的格式输出</li>
+<li><code>%g</code> 表示自动选择合适的表示法输出</li>
+</ul>
+<hr>
+<h3 id="2017-10-25"><a href="#2017-10-25" class="headerlink" title="2017_10_25"></a>2017_10_25</h3><ul>
+<li>通配符：*/?/[]<br>“*” 匹配０或多个任意字符<br>“?” 匹配单个字符<br>“[]” 可以匹配一组单个字符（例如，[12]），或者是匹配用连字符（“-”）指定的某一范围内的字符（例如，[1-3]）</li>
+</ul>
+<ul>
+<li><p><code>ls -R</code><br><code>-R</code>选项会递归地遍历指定目录，显示指定目录和它的每个子目录的内容。</p>
+</li>
+<li><p>Vim课堂<br><code>x</code>  删除当前光标下的字符<br><code>.</code>  重复上次修改<br><code>u</code>  撤销操作<br><code>dd</code>  删除操作，删除一整行<br><code>&gt;G</code>  会增加从当前行到末尾处的缩进层级<br><code>a</code>  命令在当前光标之后添加内容<br><code>A</code>  命令则在当前行的结尾添加内容<br><code>$</code>  命令可以完成移动操作，光标移动至行尾</p>
+</li>
+</ul>
+<hr>
+<h3 id="2017-10-26"><a href="#2017-10-26" class="headerlink" title="2017_10_26"></a>2017_10_26</h3><ul>
+<li><p><code>;</code>的命令是顺序执行的，但没有考虑它们的执行成功与否。分隔命令的一个更好的办法是使用<code>&amp;&amp;</code>，它同样也是依次顺序运行每条命令，但是只有当前面一条命令运行成功之后，才能执行下一条命令。如果一条命令运行失败，整个命令链就会停下来。</p>
+</li>
+<li><p><code>||</code>只有第一条命令运行失败了，第二条才会执行。</p>
+</li>
+<li><p><code>|</code>将第一条命令的输出作为第二条命令的输入。</p>
+</li>
+<li><p><code>&gt;</code>可以将输出从stdout重定向到文件。使用<code>&gt;</code> 重定向时，如果文件不存在，就会创建一个新文件；如果文件已经存在，则会覆盖已有的文件。但是如果使用<code>&gt;&gt;</code>来替代，就会把输出追加到指定文件的底部（如果文件不存在就会创建它）。</p>
+</li>
+<li><p><code>&lt;</code> 将文件作为命令输入。ex:<code>$ echo &lt; test.txt</code></p>
+</li>
+<li><p><code>&gt;&gt;</code> 追加</p>
+</li>
+</ul>
+<hr>
+<p> <em>te<strong>s</strong>t</em><br> <strong>s</strong>  </p>
+<ul>
+<li>sd  <ul>
+<li>d  </li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>d</li>
+<li>df</li>
+<li>ddasd<ul>
+<li>s d</li>
+<li>sdas</li>
+</ul>
+</li>
+</ol>
+<p><img src="./" alt=""></p>
+<p><a href="sss">xxx</a></p>
+<blockquote>
+<p>sdsad</p>
+</blockquote>
+<ul>
+<li><p>[ ] sdas</p>
+</li>
+<li><p>[x] sdasd</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>sdasd</th>
+<th>dsadas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>saS</td>
+<td>SAs</td>
+</tr>
+</tbody>
+</table>
+<p>:+1:</p>
+<p>:octocat:</p>
+<p>:tada:</p>
+<hr>
+<h3 id="2017-10-27"><a href="#2017-10-27" class="headerlink" title="2017_10_27"></a>2017_10_27</h3><ul>
+<li><code>cat</code>/<code>less</code>/<code>head</code>/<code>tail</code>。它们都能以只读模式显示文本文件的内容，但是显示的方法各不相同，<code>cat</code>命令一次显示整个文件的内容，而<code>less</code>命令则以分页方式一次一屏地显示内容。<code>head</code>命令和<code>tail</code>命令就好比一枚硬币的两面前者用于查看文件的开始部分，后者则显示文件结尾部分。总之，把这４个命令结合起来用，就可以很方便地查看文本文件中任何部分。</li>
+</ul>
+<hr>
+<h3 id="2017-10-30"><a href="#2017-10-30" class="headerlink" title="2017_10_30"></a>2017_10_30</h3><ul>
+<li><p><code>!!</code>再次运行刚刚使用过的那条命令。</p>
+</li>
+<li><p><code>ps</code>和<code>top</code>跟踪计算机中正在运行的程序。</p>
+</li>
+<li><p><code>kill</code> 终止出错的程序。</p>
+</li>
+<li><p><code>lsof</code> 列出所有打开的文件。</p>
+</li>
+<li><p><code>free</code>　报告系统内存的占用情况。</p>
+</li>
+<li><p><code>df</code>和<code>du</code>磁盘空间占用情况。</p>
+</li>
+<li><p><code>ps aux</code>查看当前正在运行的所有进程。</p>
+</li>
+<li><p><code>ps U [username]</code>查看特定用户拥有的进程。</p>
+</li>
+<li><p><code>kill -9 [PID]</code> 停止任何正在进行的处理，马上关闭。</p>
+</li>
+<li><p><code>top</code>　查看正在运行的进程的动态更新列表。</p>
+</li>
+<li><p><code>free -h</code> 显示系统的内存信息。</p>
+</li>
+<li><p><code>df -h</code> 显示磁盘的使用情况。</p>
+</li>
+<li><p><code>du -h</code> 报告目录的使用空间，<code>du -hs</code> 报告目录使用的总空间。</p>
+</li>
+</ul>
+<hr>
+<h3 id="2017-10-31"><a href="#2017-10-31" class="headerlink" title="2017_10_31"></a>2017_10_31</h3><ul>
+<li><p><code>rpm -Uhv [packagename]</code> 为基于RPM的Linux系统安装软件。</p>
+</li>
+<li><p><code>rpm -ihv [packagename]</code> <code>-i</code> 安装软件包 <code>-h</code>安装过程中显示hash标记 <code>-v</code>显示命令的执行过程 <code>-U</code> update升级。</p>
+</li>
+<li><p><code>rpm -e</code> 删除基于RPM的linux系统中的软件。</p>
+</li>
+<li><p><code>dpkg -i [packagename]</code> 为Debian安装软件包。</p>
+</li>
+<li><p><code>dpkg -r [packagename]</code> 删除软件包。</p>
+</li>
+<li><p>“DNS and BIND” 用于了解DNS.</p>
+</li>
+<li><p><code>host</code> 用于快速获知某个域名关联的ip地址。也可以做相反的操作。</p>
+</li>
+<li><p><code>traceroute</code> 跟踪路由</p>
+</li>
+<li><p><code>ifconfig</code> 查看网络信息</p>
+</li>
+<li><p><code>ifdown</code> <code>ifup</code> 网络开关</p>
+</li>
+<li><p><code>ssh-keygen -t dsa</code> 创建一个ssh身份验证密钥</p>
+</li>
+<li><p><code>ssh-copy-id -i ~/.ssh/id_dsa.pub enningxie@10.131.102.87</code> 将公钥复制到目标主机，实现免密登录。</p>
+</li>
+<li><p><code>sftp enningxie@10.131.102.87</code> sftp到远程主机</p>
+</li>
+<li><p>有用的sftp命令  </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd</code></td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td>关闭远程ssh服务器的连接</td>
+</tr>
+<tr>
+<td><code>get</code></td>
+<td>将指定的文件复制到本机</td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td>获取命令相关的帮助</td>
+</tr>
+<tr>
+<td><code>lcd</code></td>
+<td>将目录切换到本机</td>
+</tr>
+<tr>
+<td><code>lls</code></td>
+<td>列出本机上的文件</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出远程ssh服务器上当前工作目录中的文件</td>
+</tr>
+<tr>
+<td><code>put</code></td>
+<td>将指定的文件复制到远程ssh服务器</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>将指定的文件从远程ssh服务器删除</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>scp ~/bin/backup.sh enningxie@10.131.102.87:/home/enningxie/code</code> 安全地将一个文件从一台计算机复制到另一台计算机中。</li>
+</ul>
+<hr>
+<h3 id="2017-11-01"><a href="#2017-11-01" class="headerlink" title="2017_11_01"></a>2017_11_01</h3><ul>
+<li><p><code>tar zxvf xxxx.tgz -C /usr/local/</code> 　解压到指定路径</p>
+</li>
+<li><p><code>ln -s spark-1.5 spark</code>  设置软链接</p>
+</li>
+<li><p><code>/etc/profile</code>  设置环境变量</p>
+</li>
+</ul>
+<hr>
+<h3 id="2017-11-03"><a href="#2017-11-03" class="headerlink" title="2017_11_03"></a>2017_11_03</h3><ul>
+<li><p>通过实现<code>__init__()</code>方法来初始化一个对象。每当创建一个对象，Python会先创建一个空对象，然后调用该对象的<code>__init__()</code>函数。</p>
+</li>
+<li><p><code># coding=utf-8</code>　用于指定代码编码。</p>
+</li>
+</ul>
+<hr>
+<h3 id="2017-11-04"><a href="#2017-11-04" class="headerlink" title="2017_11_04"></a>2017_11_04</h3><h5 id="spark-核心概念简介"><a href="#spark-核心概念简介" class="headerlink" title="spark 核心概念简介"></a>spark 核心概念简介</h5><ul>
+<li><p>每个Spark应用都由一个驱动器程序来发起集群上的各种并行操作。驱动器程序包含应用的main函数，并定义了集群上的分布式数据集，还对这些分布式数据集应用了相关操作。</p>
+</li>
+<li><p>驱动程序通过一个SparkContext对象来访问Spark。这个对象代表对集群的一个连接</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/06/GitHub入门与实践/" rel="prev" title="GitHub入门与实践">
+                GitHub入门与实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">enningxie</p>
+              <p class="site-description motion-element" itemprop="description">coder</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-23"><span class="nav-number">1.</span> <span class="nav-text">2017_10_23</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-24"><span class="nav-number">2.</span> <span class="nav-text">2017_10_24</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-25"><span class="nav-number">3.</span> <span class="nav-text">2017_10_25</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-26"><span class="nav-number">4.</span> <span class="nav-text">2017_10_26</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-27"><span class="nav-number">5.</span> <span class="nav-text">2017_10_27</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-30"><span class="nav-number">6.</span> <span class="nav-text">2017_10_30</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-10-31"><span class="nav-number">7.</span> <span class="nav-text">2017_10_31</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-01"><span class="nav-number">8.</span> <span class="nav-text">2017_11_01</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-03"><span class="nav-number">9.</span> <span class="nav-text">2017_11_03</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2017-11-04"><span class="nav-number">10.</span> <span class="nav-text">2017_11_04</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#spark-核心概念简介"><span class="nav-number">10.0.1.</span> <span class="nav-text">spark 核心概念简介</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">enningxie</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
