@@ -142,7 +142,7 @@
 <meta property="og:description" content="正则表达式废话不多说，学习正则表达式是通向高效的必经之路。同其他玩具一样，只有在玩具上面花了足够的时间，才能玩的更好，更加享受，所以来吧。这篇博文，带给你们的是正则表达式的玩具说明书。希望你在看完了说明书后，还能勤加练习，才能玩的更好，哈哈:)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oslivcbny.bkt.clouddn.com/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95.png">
-<meta property="og:updated_time" content="2017-11-08T11:48:44.818Z">
+<meta property="og:updated_time" content="2017-11-08T14:06:37.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="正则表达式废话不多说，学习正则表达式是通向高效的必经之路。同其他玩具一样，只有在玩具上面花了足够的时间，才能玩的更好，更加享受，所以来吧。这篇博文，带给你们的是正则表达式的玩具说明书。希望你在看完了说明书后，还能勤加练习，才能玩的更好，哈哈:)">
@@ -925,18 +925,8 @@
 <td style="text-align:left">为表达式后面的部分改变处理选项</td>
 </tr>
 <tr>
-<td style="text-align:left">`(?(exp)yes</td>
-<td style="text-align:left">no)`</td>
-<td>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
-</tr>
-<tr>
 <td style="text-align:left"><code>(?(exp)yes)</code></td>
 <td style="text-align:left">同上，只是使用空表达式作为no</td>
-</tr>
-<tr>
-<td style="text-align:left">`(?(name)yes</td>
-<td style="text-align:left">no)`</td>
-<td>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>(?(name)yes)</code></td>
@@ -944,6 +934,12 @@
 </tr>
 </tbody>
 </table>
+<ul>
+<li><p><code>(?(exp)yes|no)</code>匹配：把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</p>
+</li>
+<li><p><code>(?(name)yes|no)</code>匹配：如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no。</p>
+</li>
+</ul>
 <p>至此。玩的开心:)</p>
 
       
@@ -1087,7 +1083,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1098,7 +1094,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
