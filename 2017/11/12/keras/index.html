@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next2.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next2.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next2.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo2.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="keras," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Keras:基于Python的深度学习库首先是对keras的一个简单的介绍，来自官方文档。  Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。Keras 为支持快速实验而生，能够把你的idea迅速转换为结果。">
+<meta name="keywords" content="keras">
+<meta property="og:type" content="article">
+<meta property="og:title" content="keras">
+<meta property="og:url" content="http://www.enningxie.com/2017/11/12/keras/index.html">
+<meta property="og:site_name" content="Coolixz">
+<meta property="og:description" content="Keras:基于Python的深度学习库首先是对keras的一个简单的介绍，来自官方文档。  Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。Keras 为支持快速实验而生，能够把你的idea迅速转换为结果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oslivcbny.bkt.clouddn.com/multi-input-multi-output-graph.png">
+<meta property="og:updated_time" content="2017-11-12T01:22:04.766Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="keras">
+<meta name="twitter:description" content="Keras:基于Python的深度学习库首先是对keras的一个简单的介绍，来自官方文档。  Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。Keras 为支持快速实验而生，能够把你的idea迅速转换为结果。">
+<meta name="twitter:image" content="http://oslivcbny.bkt.clouddn.com/multi-input-multi-output-graph.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '3ILT6D277E',
+      apiKey: 'b4c6376d50c3288145cd43d1afc598b2',
+      indexName: 'enning',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.enningxie.com/2017/11/12/keras/"/>
+
+
+
+
+
+  <title>keras | Coolixz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coolixz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Focus</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/12/keras/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">keras</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T09:22:04+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DeepLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">DeepLearning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/keras/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/12/keras/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Keras-基于Python的深度学习库"><a href="#Keras-基于Python的深度学习库" class="headerlink" title="Keras:基于Python的深度学习库"></a>Keras:基于Python的深度学习库</h3><p>首先是对keras的一个简单的介绍，来自<a href="https://keras-cn.readthedocs.io" target="_blank" rel="external">官方文档</a>。</p>
+<blockquote>
+<p>Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。Keras 为支持快速实验而生，能够把你的idea迅速转换为结果。</p>
+</blockquote>
+<a id="more"></a>
+<p>当前的版本号是2.0.9，对应于官方的2.0.9 release版本。</p>
+<hr>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>关于keras的安装参考：</p>
+<ul>
+<li><p><a href="https://keras-cn.readthedocs.io/en/latest/for_beginners/keras_linux/" target="_blank" rel="external">Linux</a></p>
+</li>
+<li><p><a href="https://keras-cn.readthedocs.io/en/latest/for_beginners/keras_windows/" target="_blank" rel="external">Windows</a></p>
+</li>
+</ul>
+<hr>
+<h4 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h4><p>Keras的核心数据结构是“模型”，模型是一种组织网络层的方式。keras中主要的模型是Sequential模型，Sequential是一系列网络层按顺序构成的栈。</p>
+<p>首先导入Sequential模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</div><div class="line">model = Sequential()</div></pre></td></tr></table></figure>
+<p>将一些网络层通过<code>.add()</code>堆叠起来，用于构建模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Activation</div><div class="line"></div><div class="line">model.add(Dense(units=<span class="number">64</span>, input_dim=<span class="number">100</span>))</div><div class="line">model.add(Activation(<span class="string">"relu"</span>))</div><div class="line">model.add(Dense(units=<span class="number">10</span>))</div><div class="line">model.add(Activation(<span class="string">"softmax"</span>))</div></pre></td></tr></table></figure>
+<p>完成模型的搭建后，我们需要使用<code>.compile()</code>方法来编译模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=<span class="string">"sgd"</span>, metrics=[<span class="string">'accuracy'</span>])</div></pre></td></tr></table></figure>
+<p>从上述编译模型的代码中，我们可以看到，我们需要指定损失函数（loss）和优化方法（optimizer）。当然如果需要的话，你也可以自己定制loss函数。</p>
+<p>keras的一个核心的理念就是简明易用，保证了用户对keras的绝对的控制力度，用户可以根据自己的需要定制自己的模型、网络层，甚至修改源代码。</p>
+<p>定制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> SGD</div><div class="line">model.compile(loss=<span class="string">"categorical_crossentropy"</span>, optimizer=SGD(lr=<span class="number">0.01</span>, momentum=<span class="number">0.9</span>, nesterov=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
+<p>在对模型完成编译后，我们在训练数据上按batch进行一定次数的迭代来训练模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.fit(x_train, y_train, epochs=<span class="number">5</span>, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<p>当然我们也可以手动将一个个batch的数据送入网络中训练：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.train_on_batch(x_batch, y_batch)</div></pre></td></tr></table></figure>
+<p>最后，我们用一行代码对我们的模型进行评估，用于查看模型的指标是否满足要求：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">loss_and_metrics = model.evaluate(x_test, y_test, batch_size=<span class="number">128</span>)</div></pre></td></tr></table></figure>
+<p>或者，我们可以用我们的模型，对新的数据进行预测：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classes = model.predict(x_test, batch_size=<span class="number">128</span>)</div></pre></td></tr></table></figure>
+<p>以上就是一个模型的搭建过程。</p>
+<p>keras默认使用Tensorflow作为后端来进行张量操作的。当然也可以切换成Theano，在这不做拓展。</p>
+<p>在<a href="https://github.com/fchollet/keras" target="_blank" rel="external">keras代码包</a>的examples文件夹下，我们提供了一些更高级的模型，可以去看看。</p>
+<h4 id="初步了解"><a href="#初步了解" class="headerlink" title="初步了解"></a>初步了解</h4><p>在进一步学习keras之前，我们先给出一些相关的概念，方便后续的学习。</p>
+<h5 id="符号计算"><a href="#符号计算" class="headerlink" title="符号计算"></a>符号计算</h5><p>Keras的底层库使用Theano或TensorFlow，这两个库也称为Keras的后端。无论是Theano还是TensorFlow，都是一个“符号式”的库。</p>
+<p>因此，这也使得Keras的编程与传统的Python代码有所差别。笼统的说，符号主义的计算首先定义各种变量，然后建立一个“计算图”，计算图规定了各个变量之间的计算关系。建立好的计算图需要编译以确定其内部细节，然而，此时的计算图还是一个“空壳子”，里面没有任何实际的数据，只有当你把需要运算的输入放进去后，才能在整个模型中形成数据流，从而形成输出值。</p>
+<p>Keras的模型搭建形式就是这种方法，在你搭建Keras模型完毕后，你的模型就是一个空壳子，只有实际生成可调用的函数后（K.function），输入数据，才会形成真正的数据流。</p>
+<h5 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h5><p>张量，或tensor，可以看作是向量、矩阵的自然推广，我们用张量来表示广泛的数据类型。</p>
+<p>规模最小的张量是0阶张量，即标量，也就是一个数。</p>
+<p>当我们把一些数有序的排列起来，就形成了1阶张量，也就是一个向量。</p>
+<p>如果我们继续把一组向量有序的排列起来，就形成了2阶张量，也就是一个矩阵。</p>
+<p>把矩阵摞起来，就是3阶张量，我们可以称为一个立方体，具有3个颜色通道的彩色图片就是一个这样的立方体。</p>
+<p>把立方体摞起来，好吧这次我们真的没有给它起别名了，就叫4阶张量了，不要去试图想像4阶张量是什么样子，它就是个数学上的概念。</p>
+<p>张量的阶数有时候也称为维度，或者轴，轴这个词翻译自英文axis。譬如一个矩阵[[1,2],[3,4]]，是一个2阶张量，有两个维度或轴，沿着第0个轴（为了与python的计数方式一致，本文档维度和轴从0算起）你看到的是[1,2]，[3,4]两个向量，沿着第1个轴你看到的是[1,3]，[2,4]两个向量。</p>
+<p>要理解“沿着某个轴”是什么意思，不妨试着运行一下下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</div><div class="line">sum0 = np.sum(a, axis=<span class="number">0</span>)</div><div class="line">sum1 = np.sum(a, axis=<span class="number">1</span>)</div><div class="line"></div><div class="line">print(sum0)</div><div class="line">print(sum1)</div></pre></td></tr></table></figure>
+<p>关于张量，目前知道这么多就足够了。事实上我也就知道这么多.</p>
+<h5 id="data-format"><a href="#data-format" class="headerlink" title="data_format"></a>data_format</h5><p>这是一个无可奈何的问题，在如何表示一组彩色图片的问题上，Theano和TensorFlow发生了分歧，’th’模式，也即Theano模式会把100张RGB三通道的16×32（高为16宽为32）彩色图表示为下面这种形式（100,3,16,32），Caffe采取的也是这种方式。第0个维度是样本维，代表样本的数目，第1个维度是通道维，代表颜色通道数。后面两个就是高和宽了。这种theano风格的数据组织方法，称为“channels_first”，即通道维靠前。</p>
+<p>而TensorFlow，的表达形式是（100,16,32,3），即把通道维放在了最后，这种数据组织方式称为“channels_last”。</p>
+<p>Keras默认的数据组织形式在~/.keras/keras.json中规定，可查看该文件的image_data_format一项查看，也可在代码中通过K.image_data_format()函数返回，请在网络的训练和测试中保持维度顺序一致。</p>
+<h5 id="函数式模型"><a href="#函数式模型" class="headerlink" title="函数式模型"></a>函数式模型</h5><p>在Keras 0.x中，模型其实有两种，一种叫Sequential，称为序贯模型，也就是单输入单输出，一条路通到底，层与层之间只有相邻关系，跨层连接统统没有。这种模型编译速度快，操作上也比较简单。第二种模型称为Graph，即图模型，这个模型支持多输入多输出，层与层之间想怎么连怎么连，但是编译速度慢。可以看到，Sequential其实是Graph的一个特殊情况。</p>
+<p>在Keras1和Keras2中，图模型被移除，而增加了了“functional model API”，这个东西，更加强调了Sequential是特殊情况这一点。一般的模型就称为Model，然后如果你要用简单的Sequential，OK，那还有一个快捷方式Sequential。</p>
+<p>由于functional model API在使用时利用的是“函数式编程”的风格，我们这里将其译为函数式模型。总而言之，只要这个东西接收一个或一些张量作为输入，然后输出的也是一个或一些张量，那不管它是什么鬼，统统都称作“模型”。</p>
+<h5 id="batch"><a href="#batch" class="headerlink" title="batch"></a>batch</h5><p>深度学习的优化算法，说白了就是梯度下降。每次的参数更新有两种方式。</p>
+<p>第一种，遍历全部数据集算一次损失函数，然后算函数对各个参数的梯度，更新梯度。这种方法每更新一次参数都要把数据集里的所有样本都看一遍，计算量开销大，计算速度慢，不支持在线学习，这称为Batch gradient descent，批梯度下降。</p>
+<p>另一种，每看一个数据就算一下损失函数，然后求梯度更新参数，这个称为随机梯度下降，stochastic gradient descent。这个方法速度比较快，但是收敛性能不太好，可能在最优点附近晃来晃去，hit不到最优点。两次参数的更新也有可能互相抵消掉，造成目标函数震荡的比较剧烈。</p>
+<p>为了克服两种方法的缺点，现在一般采用的是一种折中手段，mini-batch gradient decent，小批的梯度下降，这种方法把数据分为若干个批，按批来更新参数，这样，一个批中的一组数据共同决定了本次梯度的方向，下降起来就不容易跑偏，减少了随机性。另一方面因为批的样本数与整个数据集相比小了很多，计算量也不是很大。</p>
+<p>基本上现在的梯度下降都是基于mini-batch的，所以Keras的模块中经常会出现batch_size，就是指这个。</p>
+<p>顺便说一句，Keras中用的优化器SGD是stochastic gradient descent的缩写，但不代表是一个样本就更新一回，还是基于mini-batch的。</p>
+<h5 id="epochs"><a href="#epochs" class="headerlink" title="epochs"></a>epochs</h5><p>epochs指的就是训练过程中数据将被“轮”多少次，就这样。</p>
+<h5 id="batch-epochs-sample概念解析"><a href="#batch-epochs-sample概念解析" class="headerlink" title="batch, epochs, sample概念解析"></a>batch, epochs, sample概念解析</h5><ul>
+<li><p>Sample：样本，数据集中的一条数据。例如图片数据集中的一张图片，语音数据中的一段音频。</p>
+</li>
+<li><p>Batch：中文为批，一个batch由若干条数据构成。batch是进行网络优化的基本单位，网络参数的每一轮优化需要使用一个batch。batch中的样本是被并行处理的。与单个样本相比，一个batch的数据能更好的模拟数据集的分布，batch越大则对输入数据分布模拟的越好，反应在网络训练上，则体现为能让网络训练的方向“更加正确”。但另一方面，一个batch也只能让网络的参数更新一次，因此网络参数的迭代会较慢。在测试网络的时候，应该在条件的允许的范围内尽量使用更大的batch，这样计算效率会更高。</p>
+</li>
+<li><p>Epoch，epoch可译为“轮次”。如果说每个batch对应网络的一次更新的话，一个epoch对应的就是网络的一轮更新。每一轮更新中网络更新的次数可以随意，但通常会设置为遍历一遍数据集。因此一个epoch的含义是模型完整的看了一遍数据集。 设置epoch的主要作用是把模型的训练的整个训练过程分为若干个段，这样我们可以更好的观察和调整模型的训练。Keras中，当指定了验证集时，每个epoch执行完后都会运行一次验证集以确定模型的性能。另外，我们可以使用回调函数在每个epoch的训练前后执行一些操作，如调整学习率，打印目前模型的一些信息等。</p>
+</li>
+</ul>
+<hr>
+<h4 id="保存keras模型"><a href="#保存keras模型" class="headerlink" title="保存keras模型"></a>保存keras模型</h4><p>不推荐使用pickle或cPickle来保存keras模型</p>
+<p>可以使用<code>model.save(filepath)</code>将keras模型和权重保存在一个HDF5文件中，该文件将包含：</p>
+<ul>
+<li><p>模型的结构，以便重构该模型</p>
+</li>
+<li><p>模型的权重</p>
+</li>
+<li><p>训练配置（损失函数，优化器等）</p>
+</li>
+<li><p>优化器的状态，以便从上次训练中断的地方开始</p>
+</li>
+</ul>
+<p>使用<code>keras.models.load_model(filepath)</code>来重新实例化你的模型，如果文件中存储了训练配置的话，该函数还会同时完成模型的编译</p>
+<p>例子：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</div><div class="line"></div><div class="line">model.save(<span class="string">'my_model.h5'</span>)  <span class="comment"># creates a HDF5 file 'my_model.h5'</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span></span></div><div class="line"><span class="function"></span></div><div class="line">model = load_model('my_mdoel.h5')</div></pre></td></tr></table></figure>
+<p>如果你只是希望保存模型的结构，而不包含其权重或配置信息，可以使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># save as JSON</span></div><div class="line">json_string = model.to_json()</div><div class="line"></div><div class="line"><span class="comment"># save as YAML</span></div><div class="line">yaml_string = model.to_yaml()</div></pre></td></tr></table></figure>
+<p>这项操作将把模型序列化为json或yaml文件，这些文件对人而言也是友好的，如果需要的话你甚至可以手动打开这些文件并进行编辑。</p>
+<p>当然，你也可以从保存好的json文件或yaml文件中载入模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># model reconstruction from JSON:</span></div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> model_from_json</div><div class="line">model = model_from_json(json_string)</div><div class="line"></div><div class="line"><span class="comment"># model reconstruction from YAML</span></div><div class="line">model = model_from_yaml(yaml_string)</div></pre></td></tr></table></figure>
+<p>如果需要保存模型的权重，可通过下面的代码利用HDF5进行保存。注意，在使用前需要确保你已安装了HDF5和其Python库h5py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.save_weights(<span class="string">'my_model_weights.h5'</span>)</div></pre></td></tr></table></figure>
+<p>如果你需要在代码中初始化一个完全相同的模型，请使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.load_weights(<span class="string">'my_model_weights.h5'</span>)</div></pre></td></tr></table></figure>
+<p>如果你需要加载权重到不同的网络结构（有些层一样）中，例如fine-tune或transfer-learning，你可以通过层名字来加载模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.load_weights(<span class="string">'my_model_weights.h5'</span>, by_name=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""</span></div><div class="line"><span class="string">假如原模型为：</span></div><div class="line"><span class="string">    model = Sequential()</span></div><div class="line"><span class="string">    model.add(Dense(2, input_dim=3, name="dense_1"))</span></div><div class="line"><span class="string">    model.add(Dense(3, name="dense_2"))</span></div><div class="line"><span class="string">    ...</span></div><div class="line"><span class="string">    model.save_weights(fname)</span></div><div class="line"><span class="string">"""</span></div><div class="line"><span class="comment"># new model</span></div><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">2</span>, input_dim=<span class="number">3</span>, name=<span class="string">"dense_1"</span>))  <span class="comment"># will be loaded</span></div><div class="line">model.add(Dense(<span class="number">10</span>, name=<span class="string">"new_dense"</span>))  <span class="comment"># will not be loaded</span></div><div class="line"></div><div class="line"><span class="comment"># load weights from first model; will only affect the first layer, dense_1.</span></div><div class="line">model.load_weights(fname, by_name=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<h4 id="获取中间层的输出"><a href="#获取中间层的输出" class="headerlink" title="获取中间层的输出"></a>获取中间层的输出</h4><p>一种简单的方法是创建一个新的<code>Model</code>，使得它的输出是你想要的那个输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</div><div class="line"></div><div class="line">model = ...  <span class="comment"># create the original model</span></div><div class="line"></div><div class="line">layer_name = <span class="string">'my_layer'</span></div><div class="line">intermediate_layer_model = Model(input=model.input,</div><div class="line">                                 output=model.get_layer(layer_name).output)</div><div class="line">intermediate_output = intermediate_layer_model.predict(data)</div></pre></td></tr></table></figure>
+<p>此外，我们也可以建立一个Keras的函数来达到这一目的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend <span class="keyword">as</span> K</div><div class="line"></div><div class="line"><span class="comment"># with a Sequential model</span></div><div class="line">get_3rd_layer_output = K.function([model.layers[<span class="number">0</span>].input],</div><div class="line">                                  [model.layers[<span class="number">3</span>].output])</div><div class="line">layer_output = get_3rd_layer_output([X])[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p>当然，我们也可以直接编写Theano和TensorFlow的函数来完成这件事</p>
+<h3 id="开始上路"><a href="#开始上路" class="headerlink" title="开始上路"></a>开始上路</h3><h4 id="序贯-Sequential-模型"><a href="#序贯-Sequential-模型" class="headerlink" title="序贯(Sequential)模型"></a>序贯(Sequential)模型</h4><p>序贯模型是多个网络层的线性堆叠，也就是“一条路走到黑”。</p>
+<p>可以通过向<code>Sequential</code>模型传递一个layer的list来构造该模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span>  Sequential</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Activation</div><div class="line"></div><div class="line">model = Sequential([</div><div class="line">    Dense(<span class="number">32</span>, units=<span class="number">784</span>),</div><div class="line">    Activation(<span class="string">'relu'</span>),</div><div class="line">    Dense(<span class="number">10</span>),</div><div class="line">    Activation(<span class="string">'softmax'</span>)</div><div class="line">])</div></pre></td></tr></table></figure>
+<p>也可以通过<code>.add()</code>方法一个个将layer加入模型中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">32</span>, input_shape=(<span class="number">784</span>,)))</div><div class="line">model.add(Activation(<span class="string">'relu'</span>))</div></pre></td></tr></table></figure>
+<h5 id="指定输入数据的shape"><a href="#指定输入数据的shape" class="headerlink" title="指定输入数据的shape"></a>指定输入数据的shape</h5><p>模型需要知道输入数据的shape，因此，<code>Sequential</code>的第一层需要接受一个关于输入数据shape的参数，后面的各个层则可以自动的推导出中间数据的shape，因此不需要为每个层都指定这个参数。有几种方法来为第一层指定输入数据的shape</p>
+<ul>
+<li><p>传递一个<code>input_shape</code>的关键字参数给第一层，<code>input_shape</code>是一个tuple类型的数据，其中也可以填入None，如果填入None则表示此位置可能是任何正整数。数据的batch大小不应包含在其中。</p>
+</li>
+<li><p>有些2D层，如Dense，支持通过指定其输入维度<code>input_dim</code>来隐含的指定输入数据shape。一些3D的时域层支持通过参数<code>input_dim</code>和<code>input_length</code>来指定输入shape。</p>
+</li>
+<li><p>如果你需要为输入指定一个固定大小的batch_size（常用于stateful RNN网络），可以传递<code>batch_size</code>参数到一个层中，例如你想指定输入张量的batch大小是32，数据shape是（6，8），则你需要传递<code>batch_size=32</code>和<code>input_shape=(6,8)</code>。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">32</span>, input_dim=<span class="number">784</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">32</span>, input_shape=<span class="number">784</span>))</div></pre></td></tr></table></figure>
+<h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><p>在训练模型之前，我们需要通过<code>compile</code>来对学习过程进行配置。<code>compile</code>接收三个参数：</p>
+<ul>
+<li><p>优化器optimizer：该参数可指定为已预定义的优化器名，如<code>rmsprop</code>、<code>adagrad</code>，或一个<code>Optimizer</code>类的对象。</p>
+</li>
+<li><p>损失函数loss：该参数为模型试图最小化的目标函数，它可为预定义的损失函数名，如<code>categorical_crossentropy</code>、<code>mse</code>，也可以为一个损失函数。</p>
+</li>
+<li><p>指标列表metrics：对分类问题，我们一般将该列表设置为<code>metrics=[&#39;accuracy&#39;]</code>。指标可以是一个预定义指标的名字,也可以是一个用户定制的函数.指标函数应该返回单个张量,或一个完成<code>metric_name - &gt; metric_value</code>映射的字典.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># For a multi-class classification problem</span></div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'categorical_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>])</div><div class="line"></div><div class="line"><span class="comment"># For a binary classification problem</span></div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'binary_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>])</div><div class="line"></div><div class="line"><span class="comment"># For a mean squared error regression problem</span></div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'mse'</span>)</div><div class="line"></div><div class="line"><span class="comment"># For custom metrics</span></div><div class="line"><span class="keyword">import</span> keras.backend <span class="keyword">as</span> K</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mean_pred</span><span class="params">(y_true, y_pred)</span>:</span></div><div class="line">    <span class="keyword">return</span> K.mean(y_pred)</div><div class="line"></div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">            loss=<span class="string">'binary_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>, mean_pred])</div></pre></td></tr></table></figure>
+<h5 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h5><p>Keras以Numpy数组作为输入数据和标签的数据类型。训练模型一般使用<code>fit</code>函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># For a single-input model with 2 classes (binary classification):</span></div><div class="line"></div><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">32</span>, activation=<span class="string">'relu'</span>, input_dim=<span class="number">100</span>))</div><div class="line">model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'binary_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>])</div><div class="line"></div><div class="line"><span class="comment"># Generate dummy data</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">data = np.random.random((<span class="number">1000</span>, <span class="number">100</span>))</div><div class="line">labels = np.random.randint(<span class="number">2</span>, size=(<span class="number">1000</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line"><span class="comment"># Train the model, iterating on the data in batches of 32 samples</span></div><div class="line">model.fit(data, labels, epochs=<span class="number">10</span>, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># For a single-input model with 10 classes (categorical classification):</span></div><div class="line"></div><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">32</span>, activation=<span class="string">'relu'</span>, input_dim=<span class="number">100</span>))</div><div class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>))</div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'categorical_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>])</div><div class="line"></div><div class="line"><span class="comment"># Generate dummy data</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">data = np.random.random((<span class="number">1000</span>, <span class="number">100</span>))</div><div class="line">labels = np.random.randint(<span class="number">10</span>, size=(<span class="number">1000</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line"><span class="comment"># Convert labels to categorical one-hot encoding</span></div><div class="line">one_hot_labels = keras.utils.to_categorical(labels, num_classes=<span class="number">10</span>)</div><div class="line"></div><div class="line"><span class="comment"># Train the model, iterating on the data in batches of 32 samples</span></div><div class="line">model.fit(data, one_hot_labels, epochs=<span class="number">10</span>, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><p>这里是一些帮助你开始的例子</p>
+<p><strong>基于多层感知器的softmax多分类</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout, Activation</div><div class="line"><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> SGD</div><div class="line"><span class="keyword">import</span> keras</div><div class="line"></div><div class="line"><span class="comment"># Generate dummy data</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">x_train = np.random.random((<span class="number">1000</span>, <span class="number">20</span>))</div><div class="line">y_train = keras.utils.to_categorical(np.random.randint(<span class="number">10</span>, size=(<span class="number">1000</span>, <span class="number">1</span>)), num_classes=<span class="number">10</span>)</div><div class="line">x_test = np.random.random((<span class="number">100</span>, <span class="number">20</span>))</div><div class="line">y_test = keras.utils.to_categorical(np.random.randint(<span class="number">10</span>, size=(<span class="number">100</span>, <span class="number">1</span>)), num_classes=<span class="number">10</span>)</div><div class="line"></div><div class="line">model = Sequential()</div><div class="line"><span class="comment"># Dense(64) is a fully-connected layer with 64 hidden units</span></div><div class="line"><span class="comment"># in the first layer you must specify the expected input data shape:</span></div><div class="line"><span class="comment"># here, 20-dimensional vectors.</span></div><div class="line">model.add(Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>, input_dim=<span class="number">20</span>))</div><div class="line">model.add(Dropout(<span class="number">0.5</span>))</div><div class="line">model.add(Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>))</div><div class="line">model.add(Dropout(<span class="number">0.5</span>))</div><div class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>))</div><div class="line"> ;</div><div class="line">sgd = SGD(lr=<span class="number">0.01</span>, decay=<span class="number">1e-6</span>, momentum=<span class="number">0.9</span>, nesterov=<span class="keyword">True</span>)</div><div class="line">model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</div><div class="line">              optimizer=sgd,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>]</div><div class="line">              )</div><div class="line">model.fit(x_train, y_train, epochs=<span class="number">20</span>, batch_size=<span class="number">128</span>)</div><div class="line">score = model.evaluate(x_test, y_test, batch_size=<span class="number">128</span>)</div><div class="line">print(<span class="string">"Test set's score: "</span>, score)</div></pre></td></tr></table></figure>
+<p><strong>MLP的二分类</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout</div><div class="line"></div><div class="line"><span class="comment"># Generate dummy data</span></div><div class="line">x_train = np.random.random((<span class="number">1000</span>, <span class="number">20</span>))</div><div class="line">y_train = np.random.randint(<span class="number">2</span>, size=(<span class="number">1000</span>, <span class="number">1</span>))</div><div class="line">x_test = np.random.random((<span class="number">100</span>, <span class="number">20</span>))</div><div class="line">y_test = np.random.randint(<span class="number">2</span>, size=(<span class="number">100</span>, <span class="number">1</span>))</div><div class="line"></div><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">64</span>, input_dim=<span class="number">20</span>, activation=<span class="string">'relu'</span>))</div><div class="line">model.add(Dropout(<span class="number">0.5</span>))</div><div class="line">model.add(Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>))</div><div class="line">model.add(Dropout(<span class="number">0.5</span>))</div><div class="line">model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</div><div class="line"></div><div class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>,</div><div class="line">              optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>])</div><div class="line">model.fit(x_train, y_train,</div><div class="line">          epochs=<span class="number">20</span>,</div><div class="line">          batch_size=<span class="number">128</span>)</div><div class="line">score = model.evaluate(x_test, y_test, batch_size=<span class="number">128</span>)</div></pre></td></tr></table></figure>
+<h4 id="函数式（Functional）模型"><a href="#函数式（Functional）模型" class="headerlink" title="函数式（Functional）模型"></a>函数式（Functional）模型</h4><p>函数式模型称作Functional，但它的类名是Model，因此我们有时候也用Model来代表函数式模型。</p>
+<p>Keras函数式模型接口是用户定义多输出模型、非循环有向模型或具有共享层的模型等复杂模型的途径。一句话，只要你的模型不是类似VGG一样一条路走到黑的模型，或者你的模型需要多于一个的输出，那么你总应该选择函数式模型。函数式模型是最广泛的一类模型，序贯模型（Sequential）只是它的一种特殊情况。</p>
+<p>这部分的文档假设你已经对Sequential模型已经比较熟悉.</p>
+<p>让我们从简单一点的模型开始</p>
+<h5 id="第一个模型：全连接网络"><a href="#第一个模型：全连接网络" class="headerlink" title="第一个模型：全连接网络"></a>第一个模型：全连接网络</h5><p><code>Sequential</code>当然是实现全连接网络的最好方式，但我们从简单的全连接网络开始，有助于我们学习这部分的内容。在开始前，有几个概念需要澄清：</p>
+<ul>
+<li><p>层对象接受张量为参数，返回一个张量。</p>
+</li>
+<li><p>输入是张量，输出也是张量的一个框架就是一个模型，通过<code>Model</code>定义。</p>
+</li>
+<li><p>这样的模型可以被像keras的<code>Sequential</code>一样被训练。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Dense</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</div><div class="line"></div><div class="line"><span class="comment"># This returns a tensor</span></div><div class="line">inputs = Input(shape=(<span class="number">784</span>,))</div><div class="line"></div><div class="line"><span class="comment"># a layer instance is callable on a tensor, and returns a tensor</span></div><div class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(inputs)</div><div class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</div><div class="line">predictions = Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>)(x)</div><div class="line"></div><div class="line"><span class="comment"># This creates a model that includes</span></div><div class="line"><span class="comment"># the Input layer and three Dense layers</span></div><div class="line">model = Model(inputs=inputs, outputs=predictions)</div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'categorical_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>]</div><div class="line">              )</div><div class="line">model.fit(data, labels)  <span class="comment"># starts training</span></div></pre></td></tr></table></figure>
+<h5 id="所有的模型都是可调用的，就像层一样"><a href="#所有的模型都是可调用的，就像层一样" class="headerlink" title="所有的模型都是可调用的，就像层一样"></a>所有的模型都是可调用的，就像层一样</h5><p>利用函数式模型的接口，我们可以很容易的重用已经训练好的模型：你可以把模型当作一个层一样，通过提供一个tensor来调用它。注意当你调用一个模型时，你不仅仅重用了它的结构，也重用了它的权重。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = Input(shape=(<span class="number">784</span>,))</div><div class="line">y = model(x)</div></pre></td></tr></table></figure>
+<p>这种方式可以允许你快速的创建能处理序列信号的模型，你可以很快将一个图像分类的模型变为一个对视频分类的模型，只需要一行代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> TimeDistributed</div><div class="line"></div><div class="line"><span class="comment"># Input tensor for sequences of 20 timesteps,</span></div><div class="line"><span class="comment"># each containing a 784-dimensional vector</span></div><div class="line">input_sequences = Input(shape=(<span class="number">20</span>, <span class="number">784</span>))</div><div class="line"></div><div class="line"><span class="comment"># This applies our previous model to every timestep in the input sequences.</span></div><div class="line"><span class="comment"># the output of the previous model was a 10-way softmax,</span></div><div class="line"><span class="comment"># so the output of the layer below will be a sequence of 20 vectors of size 10.</span></div><div class="line">processed_sequences = TimeDistributed(model)(input_sequences)</div></pre></td></tr></table></figure>
+<h5 id="多输入和多输出模型"><a href="#多输入和多输出模型" class="headerlink" title="多输入和多输出模型"></a>多输入和多输出模型</h5><p>使用函数式模型的一个典型场景是搭建多输入、多输出的模型。</p>
+<p>考虑这样一个模型。我们希望预测Twitter上一条新闻会被转发和点赞多少次。模型的主要输入是新闻本身，也就是一个词语的序列。但我们还可以拥有额外的输入，如新闻发布的日期等。这个模型的损失函数将由两部分组成，辅助的损失函数评估仅仅基于新闻本身做出预测的情况，主损失函数评估基于新闻和额外信息的预测的情况，即使来自主损失函数的梯度发生弥散，来自辅助损失函数的信息也能够训练Embeddding和LSTM层。在模型中早点使用主要的损失函数是对于深度网络的一个良好的正则方法。总而言之，该模型框图如下：</p>
+<p><img src="http://oslivcbny.bkt.clouddn.com/multi-input-multi-output-graph.png" alt=""></p>
+<p>让我们用函数式模型来实现这个框图</p>
+<p>主要的输入接收新闻本身，即一个整数的序列（每个整数编码了一个词）。这些整数位于1到10，000之间（即我们的字典有10，000个词）。这个序列有100个单词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Embedding, LSTM, Dense</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</div><div class="line"></div><div class="line"><span class="comment"># Headline input: meant to receive sequences of 100 integers, between 1 and 10000.</span></div><div class="line"><span class="comment"># Note that we can name any layer by passing it a "name" argument.</span></div><div class="line">main_input = Input(shape=(<span class="number">100</span>,), dtype=<span class="string">'int32'</span>, name=<span class="string">'main_input'</span>)</div><div class="line"></div><div class="line"><span class="comment"># This embedding layer will encode the input sequence</span></div><div class="line"><span class="comment"># into a sequence of dense 512-dimensional vectors.</span></div><div class="line">x = Embedding(output_dim=<span class="number">512</span>, input_dim=<span class="number">10000</span>, input_length=<span class="number">100</span>)(main_input)</div><div class="line"></div><div class="line"><span class="comment"># A LSTM will transform the vector sequence into a single vector,</span></div><div class="line"><span class="comment"># containing information about the entire sequence</span></div><div class="line">lstm_out = LSTM(<span class="number">32</span>)(x)</div></pre></td></tr></table></figure>
+<p>然后，我们插入一个额外的损失，使得即使在主损失很高的情况下，LSTM和Embedding层也可以平滑的训练。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">auxiliary_output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>, name=<span class="string">'aux_output'</span>)(lstm_out)</div></pre></td></tr></table></figure>
+<p>再然后，我们将LSTM与额外的输入数据串联起来组成输入，送入模型中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">auxiliary_input = Input(shape=(<span class="number">5</span>,), name=<span class="string">'aux_input'</span>)</div><div class="line">x = keras.layers.concatenate([lstm_out, auxiliary_input])</div><div class="line"></div><div class="line"><span class="comment"># We stack a deep densely-connected network on top</span></div><div class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</div><div class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</div><div class="line">x = Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>)(x)</div><div class="line"></div><div class="line"><span class="comment"># And finally we add the main logistic regression layer</span></div><div class="line">main_output = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>, name=<span class="string">'main_output'</span>)(x)</div></pre></td></tr></table></figure>
+<p>最后，我们定义整个2输入，2输出的模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model = Model(inputs=[main_input, auxiliary_input], outputs=[main_output, auxiliary_output])</div></pre></td></tr></table></figure>
+<p>模型定义完毕，下一步编译模型。我们给额外的损失赋0.2的权重。我们可以通过关键字参数<code>loss_weights</code>或<code>loss</code>来为不同的输出设置不同的损失函数或权值。这两个参数均可为Python的列表或字典。这里我们给<code>loss</code>传递单个损失函数，这个损失函数会被应用于所有输出上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'binary_crossentropy'</span>,</div><div class="line">              loss_weights=[<span class="number">1.</span>, <span class="number">0.2</span>])</div></pre></td></tr></table></figure>
+<p>编译完成后，我们通过传递训练数据和目标值训练该模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model.fit([headline_data, additional_data], [labels, labels],</div><div class="line">          epochs=<span class="number">50</span>, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<p>因为我们输入和输出是被命名过的（在定义时传递了“name”参数），我们也可以用下面的方式编译和训练模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=&#123;<span class="string">'main_output'</span>: <span class="string">'binary_crossentropy'</span>, <span class="string">'aux_output'</span>: <span class="string">'binary_crossentropy'</span>&#125;,</div><div class="line">              loss_weights=&#123;<span class="string">'main_output'</span>: <span class="number">1.</span>, <span class="string">'aux_output'</span>: <span class="number">0.2</span>&#125;)</div><div class="line"></div><div class="line"><span class="comment"># And trained it via:</span></div><div class="line">model.fit(&#123;<span class="string">'main_input'</span>: headline_data, <span class="string">'aux_input'</span>: additional_data&#125;,</div><div class="line">          &#123;<span class="string">'main_output'</span>: labels, <span class="string">'aux_output'</span>: labels&#125;,</div><div class="line">          epochs=<span class="number">50</span>, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<h5 id="共享层"><a href="#共享层" class="headerlink" title="共享层"></a>共享层</h5><p>另一个使用函数式模型的场合是使用共享层的时候。</p>
+<p>考虑微博数据，我们希望建立模型来判别两条微博是否是来自同一个用户，这个需求同样可以用来判断一个用户的两条微博的相似性。</p>
+<p>一种实现方式是，我们建立一个模型，它分别将两条微博的数据映射到两个特征向量上，然后将特征向量串联并加一个logistic回归层，输出它们来自同一个用户的概率。这种模型的训练数据是一对对的微博。</p>
+<p>因为这个问题是对称的，所以处理第一条微博的模型当然也能重用于处理第二条微博。所以这里我们使用一个共享的LSTM层来进行映射。</p>
+<p>首先，我们将微博的数据转为（140，256）的矩阵，即每条微博有140个字符，每个单词的特征由一个256维的词向量表示，向量的每个元素为1表示某个字符出现，为0表示不出现，这是一个one-hot编码。</p>
+<p>之所以是（140，256）是因为一条微博最多有140个字符，而扩展的ASCII码表编码了常见的256个字符。原文中此处为Tweet，所以对外国人而言这是合理的。如果考虑中文字符，那一个单词的词向量就不止256了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> keras</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, LSTM, Dense</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Model</div><div class="line"></div><div class="line">tweet_a = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</div><div class="line">tweet_b = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</div></pre></td></tr></table></figure>
+<p>若要对不同的输入共享同一层，就初始化该层一次，然后多次调用它</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This layer can take as input a matrix</span></div><div class="line"><span class="comment"># and will return a vector of size 64</span></div><div class="line">shared_lstm = LSTM(<span class="number">64</span>)</div><div class="line"></div><div class="line"><span class="comment"># When we reuse the same layer instance</span></div><div class="line"><span class="comment"># multiple times, the weights of the layer</span></div><div class="line"><span class="comment"># are also being reused</span></div><div class="line"><span class="comment"># (it is effectively *the same* layer)</span></div><div class="line">encoded_a = shared_lstm(tweet_a)</div><div class="line">encoded_b = shared_lstm(tweet_b)</div><div class="line"></div><div class="line"><span class="comment"># We can then concatenate the two vectors:</span></div><div class="line">merged_vector = keras.layers.concatenate([encoded_a, encoded_b], axis=<span class="number">-1</span>)</div><div class="line"></div><div class="line"><span class="comment"># And add a logistic regression on top</span></div><div class="line">predictions = Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>)(merged_vector)</div><div class="line"></div><div class="line"><span class="comment"># We define a trainable model linking the</span></div><div class="line"><span class="comment"># tweet inputs to the predictions</span></div><div class="line">model = Model(inputs=[tweet_a, tweet_b], outputs=predictions)</div><div class="line"></div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>,</div><div class="line">              loss=<span class="string">'binary_crossentropy'</span>,</div><div class="line">              metrics=[<span class="string">'accuracy'</span>])</div><div class="line">model.fit([data_a, data_b], labels, epochs=<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<h5 id="层“节点”的概念"><a href="#层“节点”的概念" class="headerlink" title="层“节点”的概念"></a>层“节点”的概念</h5><p>无论何时，当你在某个输入上调用层时，你就创建了一个新的张量（即该层的输出），同时你也在为这个层增加一个“（计算）节点”。这个节点将输入张量映射为输出张量。当你多次调用该层时，这个层就有了多个节点，其下标分别为0，1，2…</p>
+<p>在上一版本的Keras中，你可以通过<code>layer.get_output()</code>方法来获得层的输出张量，或者通过<code>layer.output_shape</code>获得其输出张量的shape。这个版本的Keras你仍然可以这么做（除了<code>layer.get_output()</code>被output替换）。但如果一个层与多个输入相连，会出现什么情况呢?</p>
+<p>如果层只与一个输入相连，那没有任何困惑的地方。<code>.output</code>将会返回该层唯一的输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</div><div class="line"></div><div class="line">lstm = LSTM(<span class="number">32</span>)</div><div class="line">encoded_a = lstm(a)</div><div class="line"></div><div class="line"><span class="keyword">assert</span> lstm.output == encoded_a</div></pre></td></tr></table></figure>
+<p>但当层与多个输入相连时，会出现问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">a = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</div><div class="line">b = Input(shape=(<span class="number">140</span>, <span class="number">256</span>))</div><div class="line"></div><div class="line">lstm = LSTM(<span class="number">32</span>)</div><div class="line">encoded_a = lstm(a)</div><div class="line">encoded_b = lstm(b)</div><div class="line"></div><div class="line">lstm.output</div></pre></td></tr></table></figure>
+<p>这段代码就会报错</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; AssertionError: Layer lstm_1 has multiple inbound nodes,</div><div class="line">hence the notion of <span class="string">"layer output"</span> <span class="keyword">is</span> ill-defined.</div><div class="line">Use `get_output_at(node_index)` instead.</div></pre></td></tr></table></figure>
+<p>可以通过下面这种调用方式解决</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">assert</span> lstm.get_output_at(<span class="number">0</span>) == encoded_a</div><div class="line"><span class="keyword">assert</span> lstm.get_output_at(<span class="number">1</span>) == encoded_b</div></pre></td></tr></table></figure>
+<p>对于<code>input_shape</code>和<code>output_shape</code>也是一样，如果一个层只有一个节点，或所有的节点都有相同的输入或输出shape，那么<code>input_shape</code>和<code>output_shape</code>都是没有歧义的，并也只返回一个值。但是，例如你把一个相同的Conv2D应用于一个大小为(32,32,3)的数据，然后又将其应用于一个(64,64,3)的数据，那么此时该层就具有了多个输入和输出的shape，你就需要显式的指定节点的下标，来表明你想取的是哪个了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">a = Input(shape=(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>))</div><div class="line">b = Input(shape=(<span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>))</div><div class="line"></div><div class="line">conv = Conv2D(<span class="number">16</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'same'</span>)</div><div class="line">conved_a = conv(a)</div><div class="line"></div><div class="line"><span class="comment"># Only one input so far, the following will work:</span></div><div class="line"><span class="keyword">assert</span> conv.input_shape == (<span class="keyword">None</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>)</div><div class="line"></div><div class="line">conved_b = conv(b)</div><div class="line"><span class="comment"># now the `.input_shape` property wouldn't work, but this does:</span></div><div class="line"><span class="keyword">assert</span> conv.get_input_shape_at(<span class="number">0</span>) == (<span class="keyword">None</span>, <span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>)</div><div class="line"><span class="keyword">assert</span> conv.get_input_shape_at(<span class="number">1</span>) == (<span class="keyword">None</span>, <span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
+<h4 id="关于keras模型"><a href="#关于keras模型" class="headerlink" title="关于keras模型"></a>关于keras模型</h4><p>Keras有两种类型的模型，序贯模型（Sequential）和函数式模型（Model），函数式模型应用更为广泛，序贯模型是函数式模型的一种特殊情况。</p>
+<p>两类模型有一些方法是相同的：</p>
+<ul>
+<li><p><code>model.summary()</code>：打印出模型概况，它实际调用的是keras.utils.print_summary</p>
+</li>
+<li><p><code>model.get_config()</code>:返回包含模型配置信息的Python字典。模型也可以从它的config信息中重构回去</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config = model.get_config()</div><div class="line">model = Model.from_config(config)</div><div class="line"><span class="comment"># or, for Sequential:</span></div><div class="line">model = Sequential.from_config(config)</div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>model.get_layer()</code>:依据层名或下标获得层对象</p>
+</li>
+<li><p><code>model.get_weights()</code>:返回模型权重张量的列表，类型为numpy array</p>
+</li>
+<li><p><code>model.set_weights()</code>:从numpy array里将权重载入给模型，要求数组具有与<code>model.get_weights()</code>相同的形状。</p>
+</li>
+<li><p><code>model.to_json</code>:返回代表模型的json字符串，仅包含网络结构，不包含权值。可以从JSON字符串中重构原模型：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> models <span class="keyword">import</span> model_from_json</div><div class="line"></div><div class="line">json_string = model.to_json()</div><div class="line">model = model_from_json(json_string)</div></pre></td></tr></table></figure>
+<ul>
+<li><code>model.to_yaml</code>：与<code>model.to_json</code>类似，同样可以从产生的YAML字符串中重构模型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> models <span class="keyword">import</span> model_from_yaml</div><div class="line"></div><div class="line">yaml_string = model.to_yaml()</div><div class="line">model = model_from_yaml(yaml_string)</div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>model.save_weights(filepath)</code>：将模型权重保存到指定路径，文件类型是HDF5（后缀是.h5）</p>
+</li>
+<li><p><code>model.load_weights(filepath, by_name=False)</code>：从HDF5文件中加载权重到当前模型中, 默认情况下模型的结构将保持不变。如果想将权重载入不同的模型（有些层相同）中，则设置by_name=True，只有名字匹配的层才会载入权重</p>
+</li>
+</ul>
+<h4 id="关于keras的“层”（Layer）"><a href="#关于keras的“层”（Layer）" class="headerlink" title="关于keras的“层”（Layer）"></a>关于keras的“层”（Layer）</h4><p>所有的keras层对象都有如下的方法：</p>
+<ul>
+<li><p><code>layer.get_weights()</code>：返回层的权重（numpy array）</p>
+</li>
+<li><p><code>layer.set_weights(weights)</code>：从numpy array中将权重加载到该层中，要求numpy array的形状与<code>layer.get_weights()</code>的形状相同</p>
+</li>
+<li><p><code>layer.get_config()</code>：返回当前层配置信息的字典，层也可以借由配置信息重构：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layer = Dense(<span class="number">32</span>)</div><div class="line">config = layer.get_config()</div><div class="line">reconstructed_layer = Dense.from_config(config)</div></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> layers</div><div class="line">config = layer.get_config()</div><div class="line">layer = layers.deserialize(&#123;</div><div class="line">                            <span class="string">'class_name'</span>: layer.__class__.__name__,</div><div class="line">                            <span class="string">'config'</span>: config</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>如果层仅有一个计算节点（即该层不是共享层），则可以通过下列方法获得输入张量、暑促和张量、输入形状和输出数据的形状：</p>
+<ul>
+<li><p><code>layer.input</code></p>
+</li>
+<li><p><code>layer.output</code></p>
+</li>
+<li><p><code>layer.input_shape</code></p>
+</li>
+<li><p><code>layer.output_shape</code></p>
+</li>
+</ul>
+<p>如果该层有多个计算节点，则可以使用下面的方法：</p>
+<ul>
+<li><p><code>layer.get_input_at(node_index)</code></p>
+</li>
+<li><p><code>layer.get_output_at(node_index)</code></p>
+</li>
+<li><p><code>layer.get_input_shape_at(node_index)</code></p>
+</li>
+<li><p><code>layer.get_output_shape_at(node_index)</code></p>
+</li>
+</ul>
+<h4 id="常用层"><a href="#常用层" class="headerlink" title="常用层"></a>常用层</h4><p>常用层对应于core模块，core内部定义了一系列常用的网络层，包括全连接层、激活层等</p>
+<h5 id="Dense层"><a href="#Dense层" class="headerlink" title="Dense层"></a>Dense层</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keras.layers.core.Dense(units, activation=<span class="keyword">None</span>, use_bias=<span class="keyword">True</span>, kernel_initializer=<span class="string">'glorot_uniform'</span>, bias_initializer=<span class="string">'zeros'</span>, kernel_regularizer=<span class="keyword">None</span>, bias_regularizer=<span class="keyword">None</span>, activity_regularizer=<span class="keyword">None</span>, kernel_constraint=<span class="keyword">None</span>, bias_constraint=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<p>Dense就是常用的全连接层，所实现的运算是<code>output = activation(dot(input, kernel) + bias)</code>。其中<code>activation</code>是逐元素计算的激活函数，<code>kernel</code>是本层的权值矩阵，<code>bias</code>为偏置向量，只有当<code>use_bias=True</code>才会添加。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/keras/" rel="tag"># keras</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/10/Vim/" rel="next" title="Vim">
+                <i class="fa fa-chevron-left"></i> Vim
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/xz.jpg"
+                alt="enningxie" />
+            
+              <p class="site-author-name" itemprop="name">enningxie</p>
+              <p class="site-description motion-element" itemprop="description">coder</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/enningxie" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:enningxie@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Keras-基于Python的深度学习库"><span class="nav-number">1.</span> <span class="nav-text">Keras:基于Python的深度学习库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速上手"><span class="nav-number">1.2.</span> <span class="nav-text">快速上手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初步了解"><span class="nav-number">1.3.</span> <span class="nav-text">初步了解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#符号计算"><span class="nav-number">1.3.1.</span> <span class="nav-text">符号计算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#张量"><span class="nav-number">1.3.2.</span> <span class="nav-text">张量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#data-format"><span class="nav-number">1.3.3.</span> <span class="nav-text">data_format</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数式模型"><span class="nav-number">1.3.4.</span> <span class="nav-text">函数式模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#batch"><span class="nav-number">1.3.5.</span> <span class="nav-text">batch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#epochs"><span class="nav-number">1.3.6.</span> <span class="nav-text">epochs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#batch-epochs-sample概念解析"><span class="nav-number">1.3.7.</span> <span class="nav-text">batch, epochs, sample概念解析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存keras模型"><span class="nav-number">1.4.</span> <span class="nav-text">保存keras模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取中间层的输出"><span class="nav-number">1.5.</span> <span class="nav-text">获取中间层的输出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始上路"><span class="nav-number">2.</span> <span class="nav-text">开始上路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#序贯-Sequential-模型"><span class="nav-number">2.1.</span> <span class="nav-text">序贯(Sequential)模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指定输入数据的shape"><span class="nav-number">2.1.1.</span> <span class="nav-text">指定输入数据的shape</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译"><span class="nav-number">2.1.2.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练"><span class="nav-number">2.1.3.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#例子"><span class="nav-number">2.1.4.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数式（Functional）模型"><span class="nav-number">2.2.</span> <span class="nav-text">函数式（Functional）模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一个模型：全连接网络"><span class="nav-number">2.2.1.</span> <span class="nav-text">第一个模型：全连接网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#所有的模型都是可调用的，就像层一样"><span class="nav-number">2.2.2.</span> <span class="nav-text">所有的模型都是可调用的，就像层一样</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多输入和多输出模型"><span class="nav-number">2.2.3.</span> <span class="nav-text">多输入和多输出模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#共享层"><span class="nav-number">2.2.4.</span> <span class="nav-text">共享层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#层“节点”的概念"><span class="nav-number">2.2.5.</span> <span class="nav-text">层“节点”的概念</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于keras模型"><span class="nav-number">2.3.</span> <span class="nav-text">关于keras模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于keras的“层”（Layer）"><span class="nav-number">2.4.</span> <span class="nav-text">关于keras的“层”（Layer）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用层"><span class="nav-number">2.5.</span> <span class="nav-text">常用层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Dense层"><span class="nav-number">2.5.1.</span> <span class="nav-text">Dense层</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">enningxie</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://enningxie.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.enningxie.com/2017/11/12/keras/';
+          this.page.identifier = '2017/11/12/keras/';
+          this.page.title = 'keras';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://enningxie.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
