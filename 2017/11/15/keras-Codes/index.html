@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next2.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next2.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next2.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo2.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="keras," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于Keras的代码Keras是以Theano和TensorFlow为后端，提供了高度抽象的API，能够很快速的构建深度学习模型。">
+<meta name="keywords" content="keras">
+<meta property="og:type" content="article">
+<meta property="og:title" content="keras_Codes">
+<meta property="og:url" content="http://www.enningxie.com/2017/11/15/keras-Codes/index.html">
+<meta property="og:site_name" content="Coolixz">
+<meta property="og:description" content="关于Keras的代码Keras是以Theano和TensorFlow为后端，提供了高度抽象的API，能够很快速的构建深度学习模型。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-15T08:30:39.589Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="keras_Codes">
+<meta name="twitter:description" content="关于Keras的代码Keras是以Theano和TensorFlow为后端，提供了高度抽象的API，能够很快速的构建深度学习模型。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '3ILT6D277E',
+      apiKey: 'b4c6376d50c3288145cd43d1afc598b2',
+      indexName: 'enning',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.enningxie.com/2017/11/15/keras-Codes/"/>
+
+
+
+
+
+  <title>keras_Codes | Coolixz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coolixz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Focus</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/15/keras-Codes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">keras_Codes</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T16:30:39+08:00">
+                2017-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DeepLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">DeepLearning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/15/keras-Codes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/15/keras-Codes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="关于Keras的代码"><a href="#关于Keras的代码" class="headerlink" title="关于Keras的代码"></a>关于Keras的代码</h3><p>Keras是以Theano和TensorFlow为后端，提供了高度抽象的API，能够很快速的构建深度学习模型。</p>
+<a id="more"></a>
+<h4 id="A-biasc-example"><a href="#A-biasc-example" class="headerlink" title="A biasc example"></a>A biasc example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</div><div class="line">data = np.random.random((<span class="number">1000</span>, <span class="number">100</span>))</div><div class="line">labels = np.random.randint(<span class="number">2</span>, size=(<span class="number">1000</span>, <span class="number">1</span>))</div><div class="line">model = Sequential()</div><div class="line">model.add(Dense(<span class="number">32</span>, activation=<span class="string">'relu'</span>, input_dim=<span class="number">100</span>))</div><div class="line">model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</div><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'binary_crossentropy'</span>, metrics=[<span class="string">'accuracy'</span>])</div><div class="line">model.fit(data, labels, epochs=<span class="number">10</span>, batch_size=<span class="number">32</span>)</div><div class="line">predictions = model.predict(data)</div></pre></td></tr></table></figure>
+<h4 id="data"><a href="#data" class="headerlink" title="data"></a>data</h4><p>Your data needs to be stored as NumPy arrays or as a list of NumPy arrays. Ideally, you split the data in training and test sets, for which you can also resort to the <code>train_test_split</code> module of <code>sklearn.cross_validation</code>.</p>
+<h5 id="Keras-Data-Sets"><a href="#Keras-Data-Sets" class="headerlink" title="Keras Data Sets"></a>Keras Data Sets</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> boston_housing, mnist, cifar10, imdb</div><div class="line">(x_train, y_train), (x_test, y_test) = mnist.load_data()</div><div class="line">(x_train2, y_train2), (x_test2, y_test2) = boston_housing.load_data()</div><div class="line">(x_train3, y_train3), (x_test3, y_test3) = cifar10.load_data()</div><div class="line">(x_train4, y_train4), (x_test4, y_test4) = imdb.load_data(num_words=<span class="number">20000</span>)</div><div class="line">num_classes = <span class="number">10</span></div></pre></td></tr></table></figure>
+<h5 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line">data = np.loadtxt(urlopen(<span class="string">"http://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/pima-indians-diabetes.data"</span>),delimiter=<span class="string">","</span>)</div><div class="line">x = data[:, <span class="number">0</span>:<span class="number">8</span>]</div><div class="line">y = data[:, <span class="number">8</span>]</div></pre></td></tr></table></figure>
+<h4 id="Preprocessing"><a href="#Preprocessing" class="headerlink" title="Preprocessing"></a>Preprocessing</h4><h5 id="Sequence-Padding"><a href="#Sequence-Padding" class="headerlink" title="Sequence Padding"></a>Sequence Padding</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</div><div class="line">x_train4 = sequence.pad_sequences(x_train4, maxlen=<span class="number">80</span>)</div><div class="line">x_test4 = sequence.pad_sequences(x_test4, maxlen=<span class="number">80</span>)</div></pre></td></tr></table></figure>
+<h5 id="One-Hot-Encoding"><a href="#One-Hot-Encoding" class="headerlink" title="One-Hot Encoding"></a>One-Hot Encoding</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</div><div class="line">Y_train = to_categorical(y_train, num_classes)</div><div class="line">Y_test = to_categorical(y_test, num_classes)</div><div class="line">Y_train3 = to_categorical(y_train3, num_classes)</div><div class="line">Y_test3 = to_categorical(y_test3, num_classes)</div></pre></td></tr></table></figure>
+<h5 id="Train-and-Test-Sets"><a href="#Train-and-Test-Sets" class="headerlink" title="Train and Test Sets"></a>Train and Test Sets</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line">x_train5, x_test5, y_train5, y_test5 = train_test_split(x, y, test_size=<span class="number">0.33</span>, random_state=<span class="number">42</span>)</div></pre></td></tr></table></figure>
+<h5 id="Standardization-Normalization"><a href="#Standardization-Normalization" class="headerlink" title="Standardization/Normalization"></a>Standardization/Normalization</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</div><div class="line">scaler = StandardScaler().fit(x_train2)</div><div class="line">standardized_x = scaler.transform(x_train2)</div><div class="line">standardized_x_test = scaler.transform(x_test2)</div></pre></td></tr></table></figure>
+<h4 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h4><h5 id="Sequential-model"><a href="#Sequential-model" class="headerlink" title="Sequential model"></a>Sequential model</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</div><div class="line">model = Sequential()</div><div class="line">model2 = Sequential()</div><div class="line">model3 = Sequential()</div></pre></td></tr></table></figure>
+<h5 id="Multilayer-Perceptron-MLP"><a href="#Multilayer-Perceptron-MLP" class="headerlink" title="Multilayer Perceptron(MLP)"></a>Multilayer Perceptron(MLP)</h5><p><strong>Binary Classification</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</div><div class="line">model.add(Dense(<span class="number">12</span>, input_dim=<span class="number">8</span>, kernel_initializer=<span class="string">'uniform'</span>, activation=<span class="string">'relu'</span>))</div><div class="line">model.add(Dense(<span class="number">8</span>, kernel_initializer=<span class="string">'uniform'</span>, activation=<span class="string">'relu'</span>))</div><div class="line">model.add(Dense(<span class="number">1</span>, kernel_initializer=<span class="string">'uniform'</span>, activation=<span class="string">'sigmoid'</span>))</div></pre></td></tr></table></figure>
+<p><strong>Multi-Class Classification</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dropout</div><div class="line">model.add(Dense(<span class="number">512</span>, activation=<span class="string">'relu'</span>, input_shape=(<span class="number">784</span>, )))</div><div class="line">model.add(Dropout(<span class="number">0.2</span>))</div><div class="line">model.add(Dense(<span class="number">512</span>, activation=<span class="string">'relu'</span>))</div><div class="line">model.add(Dropout(<span class="number">0.2</span>))</div><div class="line">model.add(Dense(<span class="number">10</span>, activation=<span class="string">'softmax'</span>))</div></pre></td></tr></table></figure>
+<p><strong>Regression</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model.add(Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>, input_dim=train_data.shape[<span class="number">1</span>]))</div><div class="line">model.add(Dense(<span class="number">1</span>))</div></pre></td></tr></table></figure>
+<h5 id="Convolutional-Neural-Network-CNN"><a href="#Convolutional-Neural-Network-CNN" class="headerlink" title="Convolutional Neural Network(CNN)"></a>Convolutional Neural Network(CNN)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Activation, Conv2D, MaxPooling2D, Flatten</div><div class="line">model2.add(Conv2D(<span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'same'</span>, input_shape=x_train.shape[<span class="number">1</span>:]))</div><div class="line">model2.add(Activation(<span class="string">'relu'</span>))</div><div class="line">model2.add(Conv2D(<span class="number">32</span>, (<span class="number">3</span>, <span class="number">3</span>)))</div><div class="line">model2.add(Activation(<span class="string">'relu'</span>))</div><div class="line">model2.add(MaxPooling2D(pool_size=(<span class="number">2</span>, <span class="number">2</span>)))</div><div class="line">model2.add(Dropout(<span class="number">0.25</span>))</div><div class="line"></div><div class="line">model2.add(Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'same'</span>))</div><div class="line">model2.add(Activation(<span class="string">'relu'</span>))</div><div class="line">model2.add(Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>)))</div><div class="line">model2.add(Activation(<span class="string">'relu'</span>))</div><div class="line">model2.add(MaxPooling2D(pool_size=(<span class="number">2</span>, <span class="number">2</span>)))</div><div class="line">model2.add(Dropout(<span class="number">0.25</span>))</div><div class="line"></div><div class="line">model2.add(Flatten())</div><div class="line">model2.add(Dense(<span class="number">512</span>))</div><div class="line">model2.add(Activation(<span class="string">'relu'</span>))</div><div class="line">model2.add(Dropout(<span class="number">0.5</span>))</div><div class="line">model2.add(Dense(num_classes))</div><div class="line">model2.add(Activation(<span class="string">'softmax'</span>))</div></pre></td></tr></table></figure>
+<h5 id="Recurrent-Neural-Network-RNN"><a href="#Recurrent-Neural-Network-RNN" class="headerlink" title="Recurrent Neural Network (RNN)"></a>Recurrent Neural Network (RNN)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Embedding, LSTM</div><div class="line">model3.add(Embedding(<span class="number">20000</span>, <span class="number">128</span>))</div><div class="line">model3.add(LSTM(<span class="number">128</span>, dropout=<span class="number">0.2</span>, recurrent_dropout=<span class="number">0.2</span>))</div><div class="line">model3.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</div></pre></td></tr></table></figure>
+<h4 id="Inspect-Model"><a href="#Inspect-Model" class="headerlink" title="Inspect Model"></a>Inspect Model</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">model.output_shape  <span class="comment"># Model output shape</span></div><div class="line">model.summary()  <span class="comment"># Model summary representation</span></div><div class="line">model.get_config()  <span class="comment"># Model configuration</span></div><div class="line">model.get_weights()  <span class="comment"># List all weight tensors in the model</span></div></pre></td></tr></table></figure>
+<h4 id="Compile-Model"><a href="#Compile-Model" class="headerlink" title="Compile Model"></a>Compile Model</h4><h5 id="MLP-Binary-Classification"><a href="#MLP-Binary-Classification" class="headerlink" title="MLP:Binary Classification"></a>MLP:Binary Classification</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.compile(optimizer=<span class="string">'adam'</span>, loss=<span class="string">'binary_crossentropy'</span>, metrics=[<span class="string">'accuracy'</span>])</div></pre></td></tr></table></figure>
+<h5 id="MLP-Multi-Class-Classification"><a href="#MLP-Multi-Class-Classification" class="headerlink" title="MLP: Multi-Class Classification"></a>MLP: Multi-Class Classification</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>, metrics=[<span class="string">'accuracy'</span>])</div></pre></td></tr></table></figure>
+<h5 id="MLP-Regression"><a href="#MLP-Regression" class="headerlink" title="MLP: Regression"></a>MLP: Regression</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'mse'</span>, metrics=[<span class="string">'mae'</span>])</div></pre></td></tr></table></figure>
+<h5 id="Recurrent-Neural-Network"><a href="#Recurrent-Neural-Network" class="headerlink" title="Recurrent Neural Network"></a>Recurrent Neural Network</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=<span class="string">'adam'</span>, metrics=[<span class="string">'accuracy'</span>])</div></pre></td></tr></table></figure>
+<h4 id="Model-Training"><a href="#Model-Training" class="headerlink" title="Model Training"></a>Model Training</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model3.fit(x_train4, y_train4, batch_size=<span class="number">32</span>, epochs=<span class="number">15</span>, verbose=<span class="number">1</span>, validation_data=(x_test4, y_test4))</div></pre></td></tr></table></figure>
+<h4 id="Evaluate-Your-Model’s-Performance"><a href="#Evaluate-Your-Model’s-Performance" class="headerlink" title="Evaluate Your Model’s Performance"></a>Evaluate Your Model’s Performance</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">score = model3.evaluate(x_test, y_test, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<h4 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">model3.predict(x_test4, batch_size=<span class="number">32</span>)</div><div class="line">model3.predict_classes(x_test4, batch_size=<span class="number">32</span>)</div></pre></td></tr></table></figure>
+<h4 id="Save-Reload-Models"><a href="#Save-Reload-Models" class="headerlink" title="Save/Reload Models"></a>Save/Reload Models</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> load_model</div><div class="line">model3.save(<span class="string">'model_file.h5'</span>)</div><div class="line">my_model = load_model(<span class="string">'my_model.h5'</span>)</div></pre></td></tr></table></figure>
+<h4 id="Model-Fine-tuning"><a href="#Model-Fine-tuning" class="headerlink" title="Model Fine-tuning"></a>Model Fine-tuning</h4><h5 id="Optimization-Parameters"><a href="#Optimization-Parameters" class="headerlink" title="Optimization Parameters"></a>Optimization Parameters</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> RMSprop</div><div class="line">opt = RMSprop(lr=<span class="number">0.0001</span>, decay=<span class="number">1e-6</span>)</div><div class="line">model2.compile(loss=<span class="string">'categorical_crossentropy'</span>, optimizer=opt, metrics=[<span class="string">'accuracy'</span>])</div></pre></td></tr></table></figure>
+<h5 id="Early-Stopping"><a href="#Early-Stopping" class="headerlink" title="Early Stopping"></a>Early Stopping</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> EarlyStopping</div><div class="line">early_stopping_monitor = EarlyStopping(patience=<span class="number">2</span>)</div><div class="line">model3.fit(x_train4, y_train4, batch_size=<span class="number">32</span>, epochs=<span class="number">15</span>, validation_data=(x_test4, y_test4), callbacks=[early_stopping_monitor])</div></pre></td></tr></table></figure>
+<p>have fun with Keras :)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/keras/" rel="tag"># keras</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/14/matplotlib/" rel="next" title="matplotlib">
+                <i class="fa fa-chevron-left"></i> matplotlib
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/15/keras-1/" rel="prev" title="keras">
+                keras <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/xz.jpg"
+                alt="enningxie" />
+            
+              <p class="site-author-name" itemprop="name">enningxie</p>
+              <p class="site-description motion-element" itemprop="description">coder</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/enningxie" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:enningxie@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Keras的代码"><span class="nav-number">1.</span> <span class="nav-text">关于Keras的代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-biasc-example"><span class="nav-number">1.1.</span> <span class="nav-text">A biasc example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data"><span class="nav-number">1.2.</span> <span class="nav-text">data</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Keras-Data-Sets"><span class="nav-number">1.2.1.</span> <span class="nav-text">Keras Data Sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Others"><span class="nav-number">1.2.2.</span> <span class="nav-text">Others</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Preprocessing"><span class="nav-number">1.3.</span> <span class="nav-text">Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Sequence-Padding"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sequence Padding</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#One-Hot-Encoding"><span class="nav-number">1.3.2.</span> <span class="nav-text">One-Hot Encoding</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Train-and-Test-Sets"><span class="nav-number">1.3.3.</span> <span class="nav-text">Train and Test Sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Standardization-Normalization"><span class="nav-number">1.3.4.</span> <span class="nav-text">Standardization/Normalization</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Architecture"><span class="nav-number">1.4.</span> <span class="nav-text">Model Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Sequential-model"><span class="nav-number">1.4.1.</span> <span class="nav-text">Sequential model</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Multilayer-Perceptron-MLP"><span class="nav-number">1.4.2.</span> <span class="nav-text">Multilayer Perceptron(MLP)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Convolutional-Neural-Network-CNN"><span class="nav-number">1.4.3.</span> <span class="nav-text">Convolutional Neural Network(CNN)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Recurrent-Neural-Network-RNN"><span class="nav-number">1.4.4.</span> <span class="nav-text">Recurrent Neural Network (RNN)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inspect-Model"><span class="nav-number">1.5.</span> <span class="nav-text">Inspect Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Compile-Model"><span class="nav-number">1.6.</span> <span class="nav-text">Compile Model</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MLP-Binary-Classification"><span class="nav-number">1.6.1.</span> <span class="nav-text">MLP:Binary Classification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MLP-Multi-Class-Classification"><span class="nav-number">1.6.2.</span> <span class="nav-text">MLP: Multi-Class Classification</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MLP-Regression"><span class="nav-number">1.6.3.</span> <span class="nav-text">MLP: Regression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Recurrent-Neural-Network"><span class="nav-number">1.6.4.</span> <span class="nav-text">Recurrent Neural Network</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Training"><span class="nav-number">1.7.</span> <span class="nav-text">Model Training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Evaluate-Your-Model’s-Performance"><span class="nav-number">1.8.</span> <span class="nav-text">Evaluate Your Model’s Performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prediction"><span class="nav-number">1.9.</span> <span class="nav-text">Prediction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Save-Reload-Models"><span class="nav-number">1.10.</span> <span class="nav-text">Save/Reload Models</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Fine-tuning"><span class="nav-number">1.11.</span> <span class="nav-text">Model Fine-tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Optimization-Parameters"><span class="nav-number">1.11.1.</span> <span class="nav-text">Optimization Parameters</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Early-Stopping"><span class="nav-number">1.11.2.</span> <span class="nav-text">Early Stopping</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">enningxie</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://enningxie.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.enningxie.com/2017/11/15/keras-Codes/';
+          this.page.identifier = '2017/11/15/keras-Codes/';
+          this.page.title = 'keras_Codes';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://enningxie.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
