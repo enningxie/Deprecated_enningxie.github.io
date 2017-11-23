@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next2.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next2.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next2.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo2.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Docker," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于Docker的一些关于Docker的介绍，一句话“一处配置，多处使用”，这里所说的使用是拿过来直接用，无须再次配置环境，而且保证了多处的环境的一致性。 Docker可以说是“一直折腾系统的”孩子的福音。以后只要做好一个Docker的镜像(image)，系统再炸的话，只要重装系统，拿来配置好的image就直接可以上手继续折腾了。:)">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="http://www.enningxie.com/2017/11/23/Docker/index.html">
+<meta property="og:site_name" content="Coolixz">
+<meta property="og:description" content="关于Docker的一些关于Docker的介绍，一句话“一处配置，多处使用”，这里所说的使用是拿过来直接用，无须再次配置环境，而且保证了多处的环境的一致性。 Docker可以说是“一直折腾系统的”孩子的福音。以后只要做好一个Docker的镜像(image)，系统再炸的话，只要重装系统，拿来配置好的image就直接可以上手继续折腾了。:)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-23T14:16:12.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker">
+<meta name="twitter:description" content="关于Docker的一些关于Docker的介绍，一句话“一处配置，多处使用”，这里所说的使用是拿过来直接用，无须再次配置环境，而且保证了多处的环境的一致性。 Docker可以说是“一直折腾系统的”孩子的福音。以后只要做好一个Docker的镜像(image)，系统再炸的话，只要重装系统，拿来配置好的image就直接可以上手继续折腾了。:)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '3ILT6D277E',
+      apiKey: 'b4c6376d50c3288145cd43d1afc598b2',
+      indexName: 'enning',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.enningxie.com/2017/11/23/Docker/"/>
+
+
+
+
+
+  <title>Docker | Coolixz</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coolixz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Focus</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/23/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T22:16:12+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/23/Docker/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/23/Docker/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="关于Docker的一些"><a href="#关于Docker的一些" class="headerlink" title="关于Docker的一些"></a>关于Docker的一些</h3><p>关于Docker的介绍，一句话“一处配置，多处使用”，这里所说的使用是拿过来直接用，无须再次配置环境，而且保证了多处的环境的一致性。</p>
+<p>Docker可以说是“一直折腾系统的”孩子的福音。以后只要做好一个Docker的镜像(image)，系统再炸的话，只要重装系统，拿来配置好的image就直接可以上手继续折腾了。:)</p>
+<a id="more"></a>
+<h4 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h4><p>关于Docker的安装，考虑到各位看官手上的系统都不一样，所以…还是自行左转<a href="www.google.com">google</a>好吧。ps:不高兴写:)</p>
+<h4 id="Docker的基本操作"><a href="#Docker的基本操作" class="headerlink" title="Docker的基本操作"></a>Docker的基本操作</h4><p>在介绍Docker的基本操作之前，先给大家介绍一下关于Docker的三个概念：</p>
+<ul>
+<li><p>image(镜像)：最基本的东西，联想下自己的系统镜像（什么都没装的那种）。再一个需要注意的是Docker中的image类似，oop中的class的概念，然而它的实例化的东西就是我们接下来要提到的container了。</p>
+</li>
+<li><p>container(容器)：image实例化之后的东西，可以在image的基础上，做特定的修改，有点个性化，专业化的意思。</p>
+</li>
+<li><p>repository(仓库)：存放image的地方。有远程本地之分，该教程没有涉及到远程仓库。ps:为了供看官们玩耍，给大家提供了一个<code>docker pull</code>操作，从远程仓库pull指定镜像到本地玩耍:)</p>
+</li>
+</ul>
+<p>给出Docker官方提供的<a href="https://docs.docker.com/engine/reference/run/" target="_blank" rel="external">API</a>做为参考。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker pull ubuntu</div></pre></td></tr></table></figure>
+<p><code>pull</code>后面跟<code>REPOSITORY:TAG</code>，上述的命令中只给出了<code>REPOSITORY</code>，所以默认的<code>TAG</code>就是<code>latest</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker search ubuntu</div></pre></td></tr></table></figure>
+<p>用于在远程REPOSITORY中搜寻image。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker images</div></pre></td></tr></table></figure>
+<p>列出本地的镜像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker inspect ubuntu:17.10</div></pre></td></tr></table></figure>
+<p>获得指定镜像的详细信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker rmi ubuntu:17.10</div></pre></td></tr></table></figure>
+<ul>
+<li><code>-f</code> 选项用于强制删除。</li>
+</ul>
+<p>删除指定镜像。对于镜像来说，还有一个<code>image id</code>字段对镜像进行唯一的描述。所以一般操作用<code>image id</code>替换<code>ubuntu:17.10</code>效果一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run -it --name anotherName ubuntu:17.10 /bin/bash</div></pre></td></tr></table></figure>
+<p>创建并运行容器，并执行<code>/bin/bash</code>命令。</p>
+<ul>
+<li><p><code>-i</code>　打开交互模式；</p>
+</li>
+<li><p><code>-t</code>　为这个Docker容器分配一个伪终端。</p>
+</li>
+<li><p><code>-d</code> 将容器放到后台运行。</p>
+</li>
+<li><p><code>--name</code> 为容器分配一个别名。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker ps</div></pre></td></tr></table></figure>
+<p>不加参数，即列出正在运行的容器。</p>
+<ul>
+<li><p><code>-l</code> 列出上一个运行的容器</p>
+</li>
+<li><p><code>-a</code> 列出所有容器</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker start [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>启动容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker stop [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>停止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker restart [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>重启。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker rm [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>删除容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker pause [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>暂停。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker unpause [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>恢复。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker top [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>查看进程信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker inspect [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>查看容器信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker attach [anotherName] or [container id]</div></pre></td></tr></table></figure>
+<p>进入容器（将后台运行的容器切换到前台运行）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker exec [anotherName] or [container id] ps</div></pre></td></tr></table></figure>
+<p>在容器中执行另一条命令(<code>ps</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run -it -v /tmp:/data ubuntu:17.10 /bin/bash</div></pre></td></tr></table></figure>
+<p>上述的<code>-v</code>为容器和宿主机提供了一个共享数据卷(volume)的功能，<code>/tmp:/data</code>中<code>:</code>前一部分<code>/tmp</code>为宿主机上的目录，后面<code>/data</code>为要挂载到容器的目录。</p>
+<h4 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h4><p>本文提供的Docker制作镜像是通过Dockerfile文件进行制作的。</p>
+<p><code>docker import</code>和<code>docker export</code>命令是用来导出和导入容器的。</p>
+<p><code>docker commit</code>命令用来创建容器的提交。</p>
+<h5 id="image的导入导出"><a href="#image的导入导出" class="headerlink" title="image的导入导出"></a>image的导入导出</h5><p><strong>导出镜像</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker save ubuntu:17.10 ubuntu.tar</div></pre></td></tr></table></figure>
+<p>而一般导出镜像都要进行压缩处理，则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker save ubuntu:17.10 | gzip &gt; ubuntu.tar.gz</div></pre></td></tr></table></figure>
+<p><strong>导入镜像</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker load --input centos7.tar</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker load -i centos7.tar</div></pre></td></tr></table></figure>
+<h5 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h5><p><strong>FROM</strong></p>
+<p>作为Dockerfile文件中的第一条指令，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FROM &lt;image&gt;</div></pre></td></tr></table></figure>
+<p>指定从那个基础镜像构建。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FROM simpleware/bigdata-ubuntu:latest</div></pre></td></tr></table></figure>
+<p><strong>MAINTAINER</strong></p>
+<p>提供镜像作者的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MAINTAINER enningxie &lt;enningxie@163.com&gt;</div></pre></td></tr></table></figure>
+<p><strong>RUN</strong></p>
+<p>指定镜像构建过程中要的操作，这是重点，直接上例子，根据需要写命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">RUN echo &apos;export PATH=/opt/conda/bin:$PATH&apos; &gt; /etc/profile.d/conda.sh \</div><div class="line">&amp;&amp; /bin/bash /root/anaconda3.sh -b -p /opt/conda \</div><div class="line">&amp;&amp; rm /root/anaconda3.sh \</div><div class="line">&amp;&amp; tar -zxvf /root/pycharm.tar.gz -C /opt \</div><div class="line">&amp;&amp; rm /root/pycharm.tar.gz \</div><div class="line">&amp;&amp; apt-get clean</div></pre></td></tr></table></figure>
+<p><strong>WORKDIR</strong></p>
+<p>用于切换构建过程中的工作目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WORKDIR /usr</div></pre></td></tr></table></figure>
+<p><strong>ADD</strong></p>
+<p>用于将宿主机上的文件，在构建过程中载入容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ADD &lt;src&gt; &lt;dest&gt;</div></pre></td></tr></table></figure>
+<p>将<code>&lt;src&gt;</code>中指定的文件、目录、乃至URL指定的远程文件复制到镜像<dest>目标路径中。</dest></p>
+<p><strong>COPY</strong></p>
+<p>同<code>ADD</code>命令，引入外部文件进image，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">COPY &lt;src&gt; &lt;dest&gt;</div></pre></td></tr></table></figure>
+<p>区别在于<code>COPY</code>指令不能识别网络地址，也不会自动对压缩文件进行解压操作。所以在不需要自动解压或者没有网络文件需求的时候，使用<code>COPY</code>指令是一个不错的选择。</p>
+<p><strong>CMD</strong></p>
+<p><code>CMD</code>指令用于指定由镜像创建的容器中的主体程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CMD [ &quot;/bin/bash&quot; ]</div></pre></td></tr></table></figure>
+<p>与<code>RUN</code>命令的区别，<code>RUN</code>命令是在镜像构建的过程中执行，并将执行的结果提交到新的镜像层中；而<code>CMD</code>指令在镜像构建的过程中不能执行，它只是配置镜像的默认入口程序。</p>
+<p>通过<code>CMD</code>指令指定了基于这个镜像所创建的容器在默认情况下运行的程序，当然这个程序是可以改变的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run -it ubuntu:17.10 pwd</div></pre></td></tr></table></figure>
+<p>这样就会被覆盖掉。</p>
+<p><strong>ENV</strong></p>
+<p>在Dockerfile中，用于指定环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ENV PATH /opt/conda/bin:$PATH</div></pre></td></tr></table></figure>
+<p>通过<code>ENV</code>指令能够很轻松地设置Dockerfile中的环境变量。</p>
+<h5 id="镜像的构建"><a href="#镜像的构建" class="headerlink" title="镜像的构建"></a>镜像的构建</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker duild -t enningxie/ubuntu:python &lt;src&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>-t</code>指定构建后的image的<code>REPOSITORY:TAG</code></p>
+</li>
+<li><p><code>&lt;src&gt;</code>指定用于构建镜像的Dockerfile文件的路径。</p>
+</li>
+</ul>
+<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>在实际应用过程遇到，提供的镜像装有vnc服务，需要通过vnc进行gui界面的访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker run --name chrome01 -P -d linfan/chrome</div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>-P</code> Publish all exposed ports to random ports</p>
+</li>
+<li><p><code>-d</code> Run container in background and print container ID</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ docker port chrome01</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">5900/tcp -&gt; 0.0.0.0:32775</div></pre></td></tr></table></figure>
+<p>查看端口，实际操作中vnc端口为5900，则下载<a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" rel="external">vnc客户端</a>，配置<code>0.0.0.0:32775</code>，输入用户名，密码，即可访问运行着的容器中的gui界面程序。</p>
+<p>以上。</p>
+<p>have fun :)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/22/Ubuntu上安装uTorrent/" rel="next" title="Ubuntu上安装uTorrent">
+                <i class="fa fa-chevron-left"></i> Ubuntu上安装uTorrent
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/xz.jpg"
+                alt="enningxie" />
+            
+              <p class="site-author-name" itemprop="name">enningxie</p>
+              <p class="site-description motion-element" itemprop="description">coder</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/enningxie" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:enningxie@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Docker的一些"><span class="nav-number">1.</span> <span class="nav-text">关于Docker的一些</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker的安装"><span class="nav-number">1.1.</span> <span class="nav-text">Docker的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">Docker的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制作镜像"><span class="nav-number">1.3.</span> <span class="nav-text">制作镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#image的导入导出"><span class="nav-number">1.3.1.</span> <span class="nav-text">image的导入导出</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基础指令"><span class="nav-number">1.3.2.</span> <span class="nav-text">基础指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#镜像的构建"><span class="nav-number">1.3.3.</span> <span class="nav-text">镜像的构建</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tips"><span class="nav-number">1.4.</span> <span class="nav-text">tips</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">enningxie</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+-->
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://enningxie.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.enningxie.com/2017/11/23/Docker/';
+          this.page.identifier = '2017/11/23/Docker/';
+          this.page.title = 'Docker';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://enningxie.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
