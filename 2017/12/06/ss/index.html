@@ -133,19 +133,19 @@
 
 
 
-<meta name="description" content="ubuntu上安装ss12$ sudo apt-get install python-pip$ sudo pip install git+https://github.com/shadowsocks/shadowsocks.git@master  :)">
+<meta name="description" content="ubuntu上安装ss12345678910111213141516171819202122232425262728293031# Installation of basic build dependencies## Debian / Ubuntusudo apt-get install --no-install-recommends gettext build-essential autocon">
 <meta name="keywords" content="ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ss">
 <meta property="og:url" content="http://www.enningxie.com/2017/12/06/ss/index.html">
 <meta property="og:site_name" content="Coolixz">
-<meta property="og:description" content="ubuntu上安装ss12$ sudo apt-get install python-pip$ sudo pip install git+https://github.com/shadowsocks/shadowsocks.git@master  :)">
+<meta property="og:description" content="ubuntu上安装ss12345678910111213141516171819202122232425262728293031# Installation of basic build dependencies## Debian / Ubuntusudo apt-get install --no-install-recommends gettext build-essential autocon">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oslivcbny.bkt.clouddn.com/ss.jpg">
-<meta property="og:updated_time" content="2017-12-06T14:12:31.938Z">
+<meta property="og:updated_time" content="2017-12-07T09:13:07.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ss">
-<meta name="twitter:description" content="ubuntu上安装ss12$ sudo apt-get install python-pip$ sudo pip install git+https://github.com/shadowsocks/shadowsocks.git@master  :)">
+<meta name="twitter:description" content="ubuntu上安装ss12345678910111213141516171819202122232425262728293031# Installation of basic build dependencies## Debian / Ubuntusudo apt-get install --no-install-recommends gettext build-essential autocon">
 <meta name="twitter:image" content="http://oslivcbny.bkt.clouddn.com/ss.jpg">
 
 
@@ -432,7 +432,8 @@
       
 
       
-        <h2 id="ubuntu上安装ss"><a href="#ubuntu上安装ss" class="headerlink" title="ubuntu上安装ss"></a>ubuntu上安装ss</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install python-pip</div><div class="line">$ sudo pip install git+https://github.com/shadowsocks/shadowsocks.git@master</div></pre></td></tr></table></figure>
+        <h2 id="ubuntu上安装ss"><a href="#ubuntu上安装ss" class="headerlink" title="ubuntu上安装ss"></a>ubuntu上安装ss</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># Installation of basic build dependencies</div><div class="line">## Debian / Ubuntu</div><div class="line">sudo apt-get install --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libc-ares-dev automake libmbedtls-dev libsodium-dev</div><div class="line">## CentOS / Fedora / RHEL</div><div class="line">sudo yum install gettext gcc autoconf libtool automake make asciidoc xmlto c-ares-devel libev-devel</div><div class="line">## Arch</div><div class="line">sudo pacman -S gettext gcc autoconf libtool automake make asciidoc xmlto c-ares libev</div><div class="line"></div><div class="line"># Installation of Libsodium</div><div class="line">export LIBSODIUM_VER=1.0.13</div><div class="line">wget https://download.libsodium.org/libsodium/releases/libsodium-$LIBSODIUM_VER.tar.gz</div><div class="line">tar xvf libsodium-$LIBSODIUM_VER.tar.gz</div><div class="line">pushd libsodium-$LIBSODIUM_VER</div><div class="line">./configure --prefix=/usr &amp;&amp; make</div><div class="line">sudo make install</div><div class="line">popd</div><div class="line">sudo ldconfig</div><div class="line"></div><div class="line"># Installation of MbedTLS</div><div class="line">export MBEDTLS_VER=2.6.0</div><div class="line">wget https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz</div><div class="line">tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz</div><div class="line">pushd mbedtls-$MBEDTLS_VER</div><div class="line">make SHARED=1 CFLAGS=-fPIC</div><div class="line">sudo make DESTDIR=/usr install</div><div class="line">popd</div><div class="line">sudo ldconfig</div><div class="line"></div><div class="line"># Start building</div><div class="line">./autogen.sh &amp;&amp; ./configure &amp;&amp; make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install python-pip</div><div class="line">$ sudo pip install git+https://github.com/shadowsocks/shadowsocks.git@master</div></pre></td></tr></table></figure>
 <p><img src="http://oslivcbny.bkt.clouddn.com/ss.jpg" alt=""></p>
 <p>:)</p>
 
