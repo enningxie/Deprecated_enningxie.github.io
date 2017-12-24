@@ -141,7 +141,7 @@
 <meta property="og:site_name" content="Coolixz">
 <meta property="og:description" content="安装opencv">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-13T08:59:51.463Z">
+<meta property="og:updated_time" content="2017-12-23T11:56:35.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="opencv">
 <meta name="twitter:description" content="安装opencv">
@@ -431,31 +431,34 @@
 
       
         <h3 id="安装opencv"><a href="#安装opencv" class="headerlink" title="安装opencv"></a>安装opencv</h3><a id="more"></a>
-<ol>
+<ul>
 <li>安装必要的库</li>
-</ol>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential</div><div class="line"></div><div class="line">sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</div><div class="line"></div><div class="line">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev</div><div class="line"></div><div class="line">sudo apt-get install --assume-yes libopencv-dev libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip</div><div class="line"></div><div class="line">sudo apt-get install ffmpeg libopencv-dev libgtk-3-dev python-numpy python3-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libv4l-dev libtbb-dev qtbase5-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev</div></pre></td></tr></table></figure>
-<ol>
+<ul>
 <li>下载opencv的两个包</li>
-</ol>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/opencv/opencv.git</div><div class="line">git clone https://github.com/opencv/opencv_contrib.git</div></pre></td></tr></table></figure>
-<ol>
+<ul>
 <li>cmake</li>
-</ol>
+</ul>
 <p>进第一个文件夹中，<code>mkdir build</code>，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd build</div><div class="line"></div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">    -D CMAKE_INSTALL_PREFIX=/usr/local \</div><div class="line">    -D INSTALL_PYTHON_EXAMPLES=OFF \</div><div class="line">    -D INSTALL_C_EXAMPLES=OFF \</div><div class="line">    -D OPENCV_EXTRA_MODULES_PATH=~/Documents/Codes/opencv/opencv_contrib-3.2.0/modules \</div><div class="line">    -D PYTHON_EXECUTABLE=~/anaconda3/envs/tensorflow02/bin/python \</div><div class="line">    -D BUILD_EXAMPLES=OFF \</div><div class="line">    -D WITH_LAPACK=OFF \</div><div class="line">    -D WITH_CUDA=OFF ..</div></pre></td></tr></table></figure>
-<ol>
+<ul>
 <li><code>make -j4</code></li>
-</ol>
+</ul>
 <p>无穷的等待。</p>
 <p>报错请<code>make clean</code>、删除并重建build文件夹，google报错信息，fixed，然后重复3。</p>
-<ol>
+<ul>
 <li><p><code>sudo make install</code></p>
 </li>
 <li><p><code>pip install opencv-python</code></p>
 </li>
-</ol>
+</ul>
 <p>done :).</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE     -D CMAKE_INSTALL_PREFIX=/home/enningxie/Documents/Codes/opencv/opencv-3.2.0     -D INSTALL_C_EXAMPLES=OFF     -D INSTALL_PYTHON_EXAMPLES=OFF     -D OPENCV_EXTRA_MODULES_PATH=/home/enningxie/Documents/Codes/opencv/opencv_contrib-3.2.0/modules     -D BUILD_EXAMPLES=OFF     -D BUILD_opencv_python2=OFF     -D WITH_FFMPEG=1     -D WITH_CUDA=0     -D PYTHON3_EXECUTABLE=/home/enningxie/anaconda3/envs/tensorflow02/bin/python     -D PYTHON_INCLUDE_DIR=/home/enningxie/anaconda3/envs/tensorflow02/include/python3.5m     -D PYTHON_INCLUDE_DIR2=/home/enningxie/anaconda3/envs/tensorflow02/include/python3.5m     -D PYTHON_LIBRARY=/home/enningxie/anaconda3/envs/tensorflow02/lib/libpython3.5m.so     -D PYTHON3_PACKAGES_PATH=/home/enningxie/anaconda3/envs/tensorflow02/lib/python3.5     -D PYTHON3_NUMPY_INCLUDE_DIRS=/home/enningxie/anaconda3/envs/tensorflow02/lib/python3.5/site-packages/numpy/core/include ..</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make -j8</div><div class="line">make install</div></pre></td></tr></table></figure>
 
       
     </div>
