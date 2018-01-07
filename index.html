@@ -324,6 +324,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/07/TensorFlow-02-Logistic-Regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/07/TensorFlow-02-Logistic-Regression/" itemprop="url">TensorFlow_02: Logistic Regression</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-07T18:25:21+08:00">
+                2018-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/07/TensorFlow-02-Logistic-Regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/07/TensorFlow-02-Logistic-Regression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Logistic-Regression-using-TensorFlow"><a href="#Logistic-Regression-using-TensorFlow" class="headerlink" title="Logistic Regression using TensorFlow"></a>Logistic Regression using TensorFlow</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># logistic regression with tensorflow</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"></div><div class="line"></div><div class="line">mnist = input_data.read_data_sets(<span class="string">"/home/cooli/Documents/DataSets/mnist"</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># print(mnist.train.num_examples)</span></div><div class="line"><span class="comment"># print(mnist.train.images.shape)</span></div><div class="line"><span class="comment"># print(mnist.train.labels.shape)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># # -----------------------------</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># print(mnist.test.num_examples)</span></div><div class="line"><span class="comment"># print(mnist.test.images.shape)</span></div><div class="line"><span class="comment"># print(mnist.test.labels.shape)</span></div><div class="line"></div><div class="line">learning_rate = <span class="number">0.01</span></div><div class="line">batch_size = <span class="number">128</span></div><div class="line">epoches = <span class="number">30</span></div><div class="line"></div><div class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">784</span>])</div><div class="line">y = tf.placeholder(tf.int32, [<span class="keyword">None</span>, <span class="number">10</span>])</div><div class="line"></div><div class="line">w = tf.Variable(initial_value=tf.zeros([<span class="number">784</span>, <span class="number">10</span>], tf.float32))</div><div class="line">b = tf.Variable(initial_value=tf.zeros([<span class="number">10</span>], tf.float32))</div><div class="line"></div><div class="line">logits = tf.matmul(x, w) + b</div><div class="line"></div><div class="line">loss = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=y)</div><div class="line">loss_ = tf.reduce_mean(loss)</div><div class="line"></div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate).minimize(loss_)</div><div class="line"></div><div class="line">init_op = tf.global_variables_initializer()</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(init_op)</div><div class="line">    num_batch = int(mnist.train.num_examples/batch_size)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoches):</div><div class="line">        total_loss = <span class="number">0.</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(num_batch):</div><div class="line">            batch_x, batch_y = mnist.train.next_batch(batch_size)</div><div class="line">            _, losses = sess.run([train_op, loss_], feed_dict=&#123;x: batch_x, y: batch_y&#125;)</div><div class="line">            total_loss += losses</div><div class="line">        print(<span class="string">"epoch: &#123;0&#125;, loss: &#123;1&#125;"</span>.format(i+<span class="number">1</span>, total_loss/batch_size))</div><div class="line">    print(<span class="string">"training done."</span>)</div><div class="line"></div><div class="line">    print(<span class="string">"start testing"</span>)</div><div class="line">    pred_y = tf.nn.softmax(logits)</div><div class="line">    accuracy = tf.equal(tf.argmax(pred_y, <span class="number">1</span>), tf.argmax(y, <span class="number">1</span>))</div><div class="line">    accuracy_ = tf.reduce_mean(tf.cast(accuracy, tf.float32))</div><div class="line">    print(<span class="string">"accuracy on test set: "</span>, sess.run([accuracy_], feed_dict=&#123;x: mnist.test.images, y: mnist.test.labels&#125;))</div></pre></td></tr></table></figure>
+<p>xz</p>
+<p>:)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/06/TensorFlow-01-Linear-Regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1724,164 +1879,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/23/Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="enningxie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/xz.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coolixz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/23/Docker/" itemprop="url">Docker</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T22:16:12+08:00">
-                2017-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/23/Docker/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/23/Docker/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="关于Docker的一些"><a href="#关于Docker的一些" class="headerlink" title="关于Docker的一些"></a>关于Docker的一些</h3><p>关于Docker的介绍，一句话“一处配置，多处使用”，这里所说的使用是拿过来直接用，无须再次配置环境，而且保证了多处的环境的一致性。</p>
-<p>Docker可以说是“一直折腾系统的”孩子的福音。以后只要做好一个Docker的镜像(image)，系统再炸的话，只要重装系统，拿来配置好的image就直接可以上手继续折腾了。:)</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/23/Docker/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1936,7 +1933,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
