@@ -122,7 +122,7 @@
 
 
 
-  <meta name="keywords" content="opencv," />
+  <meta name="keywords" content="TensorFlow," />
 
 
 
@@ -133,18 +133,18 @@
 
 
 
-<meta name="description" content="安装opencv">
-<meta name="keywords" content="opencv">
+<meta name="description" content="Polynomial_regression using tensorflow.1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# Polynomial_regressionimport tensorflow as tf">
+<meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="opencv">
-<meta property="og:url" content="http://www.enningxie.com/2017/12/13/opencv/index.html">
+<meta property="og:title" content="TensorFlow_03: Polynomial_regression">
+<meta property="og:url" content="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/index.html">
 <meta property="og:site_name" content="Coolixz">
-<meta property="og:description" content="安装opencv">
+<meta property="og:description" content="Polynomial_regression using tensorflow.1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# Polynomial_regressionimport tensorflow as tf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T10:24:39.759Z">
+<meta property="og:updated_time" content="2018-01-08T07:19:42.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="opencv">
-<meta name="twitter:description" content="安装opencv">
+<meta name="twitter:title" content="TensorFlow_03: Polynomial_regression">
+<meta name="twitter:description" content="Polynomial_regression using tensorflow.1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# Polynomial_regressionimport tensorflow as tf">
 
 
 
@@ -174,13 +174,13 @@
 
 
 
-  <link rel="canonical" href="http://www.enningxie.com/2017/12/13/opencv/"/>
+  <link rel="canonical" href="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/"/>
 
 
 
 
 
-  <title>opencv | Coolixz</title>
+  <title>TensorFlow_03: Polynomial_regression | Coolixz</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/12/13/opencv/">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="enningxie">
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">opencv</h1>
+          <h1 class="post-title" itemprop="name headline">TensorFlow_03: Polynomial_regression</h1>
         
 
         <div class="post-meta">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T16:59:51+08:00">
-                2017-12-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T09:46:22+08:00">
+                2018-01-08
               </time>
             
 
@@ -377,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
                   </a>
                 </span>
 
@@ -395,9 +395,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/13/opencv/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/08/TensorFlow-03-Polynomial-regression/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/13/opencv/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/08/TensorFlow-03-Polynomial-regression/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -430,39 +430,8 @@
       
 
       
-        <h3 id="安装opencv"><a href="#安装opencv" class="headerlink" title="安装opencv"></a>安装opencv</h3><a id="more"></a>
-<ul>
-<li>安装必要的库</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install build-essential</div><div class="line"></div><div class="line">sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</div><div class="line"></div><div class="line">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev</div><div class="line"></div><div class="line">sudo apt-get install --assume-yes libopencv-dev libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip</div><div class="line"></div><div class="line">sudo apt-get install ffmpeg libopencv-dev libgtk-3-dev python-numpy python3-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libv4l-dev libtbb-dev qtbase5-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev</div></pre></td></tr></table></figure>
-<ul>
-<li>下载opencv的两个包</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/opencv/opencv.git</div><div class="line">git clone https://github.com/opencv/opencv_contrib.git</div></pre></td></tr></table></figure>
-<ul>
-<li>cmake</li>
-</ul>
-<p>进第一个文件夹中，<code>mkdir build</code>，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd build</div><div class="line"></div><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">    -D CMAKE_INSTALL_PREFIX=/usr/local \</div><div class="line">    -D INSTALL_PYTHON_EXAMPLES=OFF \</div><div class="line">    -D INSTALL_C_EXAMPLES=OFF \</div><div class="line">    -D OPENCV_EXTRA_MODULES_PATH=~/Documents/Codes/opencv/opencv_contrib-3.2.0/modules \</div><div class="line">    -D PYTHON_EXECUTABLE=~/anaconda3/envs/tensorflow02/bin/python \</div><div class="line">    -D BUILD_EXAMPLES=OFF \</div><div class="line">    -D WITH_LAPACK=OFF \</div><div class="line">    -D WITH_CUDA=OFF ..</div></pre></td></tr></table></figure>
-<ul>
-<li><code>make -j4</code></li>
-</ul>
-<p>无穷的等待。</p>
-<p>报错请<code>make clean</code>、删除并重建build文件夹，google报错信息，fixed，然后重复3。</p>
-<ul>
-<li><p><code>sudo make install</code></p>
-</li>
-<li><p><code>pip install opencv-python</code></p>
-</li>
-</ul>
-<p>done :).</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE     -D CMAKE_INSTALL_PREFIX=/home/enningxie/Documents/Codes/opencv/opencv-3.2.0     -D INSTALL_C_EXAMPLES=OFF     -D INSTALL_PYTHON_EXAMPLES=OFF     -D OPENCV_EXTRA_MODULES_PATH=/home/enningxie/Documents/Codes/opencv/opencv_contrib-3.2.0/modules     -D BUILD_EXAMPLES=OFF     -D BUILD_opencv_python2=OFF     -D WITH_FFMPEG=1     -D WITH_CUDA=0     -D PYTHON3_EXECUTABLE=/home/enningxie/anaconda3/envs/tensorflow02/bin/python     -D PYTHON_INCLUDE_DIR=/home/enningxie/anaconda3/envs/tensorflow02/include/python3.5m     -D PYTHON_INCLUDE_DIR2=/home/enningxie/anaconda3/envs/tensorflow02/include/python3.5m     -D PYTHON_LIBRARY=/home/enningxie/anaconda3/envs/tensorflow02/lib/libpython3.5m.so     -D PYTHON3_PACKAGES_PATH=/home/enningxie/anaconda3/envs/tensorflow02/lib/python3.5     -D PYTHON3_NUMPY_INCLUDE_DIRS=/home/enningxie/anaconda3/envs/tensorflow02/lib/python3.5/site-packages/numpy/core/include ..</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make -j8</div><div class="line">make install</div></pre></td></tr></table></figure>
-<p>对于错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal error: LAPACKE_H_PATH-NOTFOUND/lapacke.h: No such file or directory #include &quot;LAPACKE_H_PATH-NOTFOUND/lapacke.h&quot;</div></pre></td></tr></table></figure>
-<p>解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install liblapacke-dev checkinstall</div></pre></td></tr></table></figure>
+        <h4 id="Polynomial-regression-using-tensorflow"><a href="#Polynomial-regression-using-tensorflow" class="headerlink" title="Polynomial_regression using tensorflow."></a>Polynomial_regression using tensorflow.</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Polynomial_regression</span></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line">learning_rate = <span class="number">0.01</span></div><div class="line">training_epochs = <span class="number">100</span></div><div class="line"></div><div class="line"><span class="comment"># fake data</span></div><div class="line">trX = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">101</span>)</div><div class="line"></div><div class="line">num_coeffs = <span class="number">6</span></div><div class="line">trY_coeffs = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">trY = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">    trY += trY_coeffs[i] * np.power(trX, i)</div><div class="line"></div><div class="line"><span class="comment"># add some noise</span></div><div class="line">trY += np.random.randn(*trX.shape) * <span class="number">1.5</span></div><div class="line"></div><div class="line"><span class="comment"># plot the fake data</span></div><div class="line">plt.scatter(trX, trY)</div><div class="line"><span class="comment"># plt.show()</span></div><div class="line"></div><div class="line"><span class="comment"># placeholder</span></div><div class="line">X = tf.placeholder(tf.float32)</div><div class="line">Y = tf.placeholder(tf.float32)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># model</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(X, w)</span>:</span></div><div class="line">    terms = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">        term = tf.multiply(w[i], tf.pow(X, i))</div><div class="line">        terms.append(term)</div><div class="line">    <span class="keyword">return</span> tf.add_n(terms)</div><div class="line"></div><div class="line"></div><div class="line">w = tf.Variable([<span class="number">0.</span>] * num_coeffs, name=<span class="string">"parameters"</span>)</div><div class="line">y_model = model(X, w)</div><div class="line"></div><div class="line">cost = tf.reduce_mean(tf.square(Y-y_model))</div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate).minimize(cost)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(tf.global_variables_initializer())</div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(training_epochs):</div><div class="line">        total_loss = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span>(x, y) <span class="keyword">in</span> zip(trX, trY):</div><div class="line">            loss, _ = sess.run([cost, train_op], feed_dict=&#123;X: x, Y: y&#125;)</div><div class="line">            total_loss += loss</div><div class="line">        print(<span class="string">"epoch: &#123;0&#125;, loss: &#123;1&#125;."</span>.format(epoch+<span class="number">1</span>, total_loss/<span class="number">101</span>))</div><div class="line">    w_val = sess.run(w)</div><div class="line">    print(<span class="string">"--------"</span>)</div><div class="line">    print(<span class="string">"w: "</span>, w_val)</div><div class="line">    trY2 = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">        trY2 += w_val[i] * np.power(trX, i)</div><div class="line">    plt.scatter(trX, trY)</div><div class="line">    plt.plot(trX, trY2)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
+<p>xz<br>:)</p>
 
       
     </div>
@@ -480,7 +449,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/opencv/" rel="tag"># opencv</a>
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
           
         </div>
       
@@ -493,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/06/ss/" rel="next" title="ss">
-                <i class="fa fa-chevron-left"></i> ss
+              <a href="/2018/01/07/TensorFlow-02-Logistic-Regression/" rel="next" title="TensorFlow_02: Logistic Regression">
+                <i class="fa fa-chevron-left"></i> TensorFlow_02: Logistic Regression
               </a>
             
           </div>
@@ -503,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/29/be-focus/" rel="prev" title="be focus">
-                be focus <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/08/TensorFlow-04-DNN/" rel="prev" title="TensorFlow_04: DNN">
+                TensorFlow_04: DNN <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -667,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装opencv"><span class="nav-number">1.</span> <span class="nav-text">安装opencv</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-regression-using-tensorflow"><span class="nav-number">1.</span> <span class="nav-text">Polynomial_regression using tensorflow.</span></a></li></ol></div>
             
 
           </div>
@@ -869,9 +838,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.enningxie.com/2017/12/13/opencv/';
-          this.page.identifier = '2017/12/13/opencv/';
-          this.page.title = 'opencv';
+          this.page.url = 'http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/';
+          this.page.identifier = '2018/01/08/TensorFlow-03-Polynomial-regression/';
+          this.page.title = 'TensorFlow_03: Polynomial_regression';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://enningxie.disqus.com/embed.js';

@@ -324,6 +324,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/08/TensorFlow-04-DNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/TensorFlow-04-DNN/" itemprop="url">TensorFlow_04: DNN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T15:18:40+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/08/TensorFlow-04-DNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/08/TensorFlow-04-DNN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Deep-Neural-networks-using-tensorflow-raw"><a href="#Deep-Neural-networks-using-tensorflow-raw" class="headerlink" title="Deep Neural networks using tensorflow(raw)"></a>Deep Neural networks using tensorflow(raw)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># dnn using tensorflow</span></div><div class="line"><span class="comment"># 2-Hidden layers fully connected nn</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</div><div class="line"></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line"><span class="comment"># import mnist data</span></div><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line">mnist = input_data.read_data_sets(<span class="string">"/home/enningxie/Documents/DataSets/mnist/"</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># parameters</span></div><div class="line">learning_rate = <span class="number">0.01</span></div><div class="line">num_classes = <span class="number">10</span></div><div class="line">num_features = <span class="number">784</span></div><div class="line">n_layer1 = <span class="number">256</span></div><div class="line">n_layer2 = <span class="number">128</span></div><div class="line">batch_size = <span class="number">128</span></div><div class="line">training_steps = <span class="number">100</span></div><div class="line">display_step = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="comment"># weights and bias</span></div><div class="line">weight = &#123;</div><div class="line">    <span class="string">"w1"</span>: tf.Variable(initial_value=tf.truncated_normal([num_features, n_layer1])),</div><div class="line">    <span class="string">"w2"</span>: tf.Variable(initial_value=tf.truncated_normal([n_layer1, n_layer2])),</div><div class="line">    <span class="string">"w3"</span>: tf.Variable(initial_value=tf.truncated_normal([n_layer2, num_classes])),</div><div class="line">&#125;</div><div class="line"></div><div class="line">bia = &#123;</div><div class="line">    <span class="string">"b1"</span>: tf.Variable(initial_value=tf.truncated_normal([n_layer1])),</div><div class="line">    <span class="string">"b2"</span>: tf.Variable(initial_value=tf.truncated_normal([n_layer2])),</div><div class="line">    <span class="string">"b3"</span>: tf.Variable(initial_value=tf.truncated_normal([num_classes]))</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># define the model</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(input_data)</span>:</span></div><div class="line">    layer1_out = tf.nn.relu(tf.add(tf.matmul(input_data, weight[<span class="string">'w1'</span>]), bia[<span class="string">'b1'</span>]))</div><div class="line">    layer2_out = tf.nn.relu(tf.add(tf.matmul(layer1_out, weight[<span class="string">'w2'</span>]), bia[<span class="string">'b2'</span>]))</div><div class="line">    output = tf.add(tf.matmul(layer2_out, weight[<span class="string">'w3'</span>]), bia[<span class="string">'b3'</span>])</div><div class="line">    <span class="keyword">return</span> output</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># tf graph input</span></div><div class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, num_features])</div><div class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, num_classes])</div><div class="line"></div><div class="line"><span class="comment"># loss and train</span></div><div class="line">out = model(x)</div><div class="line">loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=out, labels=y))</div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate).minimize(loss)</div><div class="line"></div><div class="line"><span class="comment"># accuracy</span></div><div class="line">pred = tf.nn.softmax(out)</div><div class="line">accuracy_ = tf.equal(tf.argmax(pred, <span class="number">1</span>), tf.argmax(y, <span class="number">1</span>))</div><div class="line">accuracy = tf.reduce_mean(tf.cast(accuracy_, tf.float32))</div><div class="line"></div><div class="line"><span class="comment"># init variables</span></div><div class="line">init_op = tf.global_variables_initializer()</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(init_op)</div><div class="line">    num_batch = int(mnist.train.num_examples / batch_size)</div><div class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(training_steps):</div><div class="line">        avg_loss = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_batch):</div><div class="line">            batch_x, batch_y = mnist.train.next_batch(batch_size)</div><div class="line">            _, batch_loss = sess.run([train_op, loss], feed_dict=&#123;x: batch_x, y: batch_y&#125;)</div><div class="line">            avg_loss += batch_loss / num_batch</div><div class="line">        <span class="keyword">if</span> (step+<span class="number">1</span>) % display_step == <span class="number">0</span>:</div><div class="line">            print(<span class="string">"epoch: &#123;0&#125;, loss: &#123;1&#125;"</span>.format(step+<span class="number">1</span>, avg_loss))</div><div class="line">    print(<span class="string">"optimization end."</span>)</div><div class="line">    print(<span class="string">"---------------------"</span>)</div><div class="line">    print(<span class="string">"testing..."</span>)</div><div class="line">    acc = sess.run(accuracy, feed_dict=&#123;x: mnist.test.images, y: mnist.test.labels&#125;)</div><div class="line">    print(<span class="string">"TestSet's accuracy: "</span>, acc)</div></pre></td></tr></table></figure>
+<p>xz</p>
+<p>:)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/TensorFlow-03-Polynomial-regression/" itemprop="url">TensorFlow_03: Polynomial_regression</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T09:46:22+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/08/TensorFlow-03-Polynomial-regression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/08/TensorFlow-03-Polynomial-regression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Polynomial-regression-using-tensorflow"><a href="#Polynomial-regression-using-tensorflow" class="headerlink" title="Polynomial_regression using tensorflow."></a>Polynomial_regression using tensorflow.</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Polynomial_regression</span></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line">learning_rate = <span class="number">0.01</span></div><div class="line">training_epochs = <span class="number">100</span></div><div class="line"></div><div class="line"><span class="comment"># fake data</span></div><div class="line">trX = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">101</span>)</div><div class="line"></div><div class="line">num_coeffs = <span class="number">6</span></div><div class="line">trY_coeffs = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">trY = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">    trY += trY_coeffs[i] * np.power(trX, i)</div><div class="line"></div><div class="line"><span class="comment"># add some noise</span></div><div class="line">trY += np.random.randn(*trX.shape) * <span class="number">1.5</span></div><div class="line"></div><div class="line"><span class="comment"># plot the fake data</span></div><div class="line">plt.scatter(trX, trY)</div><div class="line"><span class="comment"># plt.show()</span></div><div class="line"></div><div class="line"><span class="comment"># placeholder</span></div><div class="line">X = tf.placeholder(tf.float32)</div><div class="line">Y = tf.placeholder(tf.float32)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># model</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(X, w)</span>:</span></div><div class="line">    terms = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">        term = tf.multiply(w[i], tf.pow(X, i))</div><div class="line">        terms.append(term)</div><div class="line">    <span class="keyword">return</span> tf.add_n(terms)</div><div class="line"></div><div class="line"></div><div class="line">w = tf.Variable([<span class="number">0.</span>] * num_coeffs, name=<span class="string">"parameters"</span>)</div><div class="line">y_model = model(X, w)</div><div class="line"></div><div class="line">cost = tf.reduce_mean(tf.square(Y-y_model))</div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate).minimize(cost)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(tf.global_variables_initializer())</div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(training_epochs):</div><div class="line">        total_loss = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span>(x, y) <span class="keyword">in</span> zip(trX, trY):</div><div class="line">            loss, _ = sess.run([cost, train_op], feed_dict=&#123;X: x, Y: y&#125;)</div><div class="line">            total_loss += loss</div><div class="line">        print(<span class="string">"epoch: &#123;0&#125;, loss: &#123;1&#125;."</span>.format(epoch+<span class="number">1</span>, total_loss/<span class="number">101</span>))</div><div class="line">    w_val = sess.run(w)</div><div class="line">    print(<span class="string">"--------"</span>)</div><div class="line">    print(<span class="string">"w: "</span>, w_val)</div><div class="line">    trY2 = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">        trY2 += w_val[i] * np.power(trX, i)</div><div class="line">    plt.scatter(trX, trY)</div><div class="line">    plt.plot(trX, trY2)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
+<p>xz<br>:)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/07/TensorFlow-02-Logistic-Regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1564,321 +1873,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/24/解决matplotlib图例中文乱码问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="enningxie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/xz.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coolixz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/24/解决matplotlib图例中文乱码问题/" itemprop="url">解决matplotlib图例中文乱码问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T23:27:37+08:00">
-                2017-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/24/解决matplotlib图例中文乱码问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/24/解决matplotlib图例中文乱码问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="matplotlib图例中文乱码解决方案"><a href="#matplotlib图例中文乱码解决方案" class="headerlink" title="matplotlib图例中文乱码解决方案"></a>matplotlib图例中文乱码解决方案</h3><p><strong>状况</strong>：用<code>matplotlib</code>画图过程中，会用中文做图例(xlabel,title…)，会遇到中文乱码的问题（方格）。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/24/解决matplotlib图例中文乱码问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/11/24/解决ubuntu的中文乱码问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="enningxie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/xz.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coolixz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/24/解决ubuntu的中文乱码问题/" itemprop="url">解决ubuntu的中文乱码问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T23:17:29+08:00">
-                2017-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/24/解决ubuntu的中文乱码问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/24/解决ubuntu的中文乱码问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="ubuntu中文支持，及中文乱码问题"><a href="#ubuntu中文支持，及中文乱码问题" class="headerlink" title="ubuntu中文支持，及中文乱码问题"></a>ubuntu中文支持，及中文乱码问题</h3><p>该篇博文，是本人踩了一下午的坑的成果，亲测有效。对服务器同样有效。</p>
-<p><strong>状况</strong>：所用的ubuntu系统不支持中文，遇见中文就????。ORZ…</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/24/解决ubuntu的中文乱码问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1933,7 +1927,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
