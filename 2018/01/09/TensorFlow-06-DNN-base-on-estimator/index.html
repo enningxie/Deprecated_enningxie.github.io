@@ -133,18 +133,18 @@
 
 
 
-<meta name="description" content="Linear Regression using TensorFlow12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# linear regressionimport tensorflow as tfimport numpy as nptest_data_size =">
+<meta name="description" content="2 hidden layers’ DNN using tf.estimator12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TensorFlow_01: Linear Regression.">
-<meta property="og:url" content="http://www.enningxie.com/2018/01/06/TensorFlow-01-Linear-Regression/index.html">
+<meta property="og:title" content="TensorFlow_06: DNN(base on estimator)">
+<meta property="og:url" content="http://www.enningxie.com/2018/01/09/TensorFlow-06-DNN-base-on-estimator/index.html">
 <meta property="og:site_name" content="Coolixz">
-<meta property="og:description" content="Linear Regression using TensorFlow12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# linear regressionimport tensorflow as tfimport numpy as nptest_data_size =">
+<meta property="og:description" content="2 hidden layers’ DNN using tf.estimator12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-06T10:59:20.278Z">
+<meta property="og:updated_time" content="2018-01-09T12:34:35.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TensorFlow_01: Linear Regression.">
-<meta name="twitter:description" content="Linear Regression using TensorFlow12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849# linear regressionimport tensorflow as tfimport numpy as nptest_data_size =">
+<meta name="twitter:title" content="TensorFlow_06: DNN(base on estimator)">
+<meta name="twitter:description" content="2 hidden layers’ DNN using tf.estimator12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485">
 
 
 
@@ -174,13 +174,13 @@
 
 
 
-  <link rel="canonical" href="http://www.enningxie.com/2018/01/06/TensorFlow-01-Linear-Regression/"/>
+  <link rel="canonical" href="http://www.enningxie.com/2018/01/09/TensorFlow-06-DNN-base-on-estimator/"/>
 
 
 
 
 
-  <title>TensorFlow_01: Linear Regression. | Coolixz</title>
+  <title>TensorFlow_06: DNN(base on estimator) | Coolixz</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/06/TensorFlow-01-Linear-Regression/">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/09/TensorFlow-06-DNN-base-on-estimator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="enningxie">
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TensorFlow_01: Linear Regression.</h1>
+          <h1 class="post-title" itemprop="name headline">TensorFlow_06: DNN(base on estimator)</h1>
         
 
         <div class="post-meta">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T18:57:42+08:00">
-                2018-01-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T20:32:56+08:00">
+                2018-01-09
               </time>
             
 
@@ -395,9 +395,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/06/TensorFlow-01-Linear-Regression/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/09/TensorFlow-06-DNN-base-on-estimator/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/06/TensorFlow-01-Linear-Regression/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/09/TensorFlow-06-DNN-base-on-estimator/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -430,8 +430,9 @@
       
 
       
-        <h3 id="Linear-Regression-using-TensorFlow"><a href="#Linear-Regression-using-TensorFlow" class="headerlink" title="Linear Regression using TensorFlow"></a>Linear Regression using TensorFlow</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># linear regression</span></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"></div><div class="line">test_data_size = <span class="number">2000</span></div><div class="line">iterations = <span class="number">10000</span></div><div class="line">learning_rate = <span class="number">0.005</span></div><div class="line">global_step = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_test_values</span><span class="params">()</span>:</span></div><div class="line">    train_x = []</div><div class="line">    train_y = []</div><div class="line"></div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(test_data_size):</div><div class="line">        x1 = np.random.rand()</div><div class="line">        x2 = np.random.rand()</div><div class="line">        x3 = np.random.rand()</div><div class="line">        y_f = <span class="number">2</span> * x1 + <span class="number">3</span> * x2 + <span class="number">7</span> * x3 + <span class="number">4</span></div><div class="line">        train_x.append([x1, x2, x3])</div><div class="line">        train_y.append(y_f)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> np.array(train_x), np.transpose([train_y])</div><div class="line"></div><div class="line"></div><div class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">3</span>], name=<span class="string">'x'</span>)</div><div class="line">W = tf.Variable(tf.zeros([<span class="number">3</span>, <span class="number">1</span>]), name=<span class="string">'W'</span>)</div><div class="line">b = tf.Variable(tf.zeros([<span class="number">1</span>]), name=<span class="string">'b'</span>)</div><div class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">1</span>])</div><div class="line"></div><div class="line">model = tf.add(tf.matmul(x, W), b)</div><div class="line"></div><div class="line">cost = tf.reduce_mean(tf.square(y - model))</div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)</div><div class="line"></div><div class="line">train_data, train_values = generate_test_values()</div><div class="line"></div><div class="line">init_op = tf.global_variables_initializer()</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(init_op)</div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(iterations):</div><div class="line">        _, costs = sess.run([train_op, cost], feed_dict=&#123;x: train_data, y: train_values&#125;)</div><div class="line">        global_step += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> global_step % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            print(<span class="string">"step: "</span>, global_step, <span class="string">" cost: "</span>, costs)</div><div class="line">    print(<span class="string">"W: "</span>, sess.run(W))</div><div class="line">    print(<span class="string">"b: "</span>, sess.run(b))</div></pre></td></tr></table></figure>
-<p>xz<br>:)</p>
+        <h3 id="2-hidden-layers’-DNN-using-tf-estimator"><a href="#2-hidden-layers’-DNN-using-tf-estimator" class="headerlink" title="2 hidden layers’ DNN using tf.estimator"></a>2 hidden layers’ DNN using tf.estimator</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 2-hidden layers nn using tensorflow's higher level API tf.estimator</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import</div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div><div class="line"></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"></div><div class="line">tf.logging.set_verbosity(tf.logging.INFO)</div><div class="line"></div><div class="line"><span class="comment"># Input minist</span></div><div class="line">mnist = input_data.read_data_sets(<span class="string">'/home/enningxie/Documents/DataSets/mnist/'</span>, one_hot=<span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="comment"># parameters</span></div><div class="line">learning_rate = <span class="number">0.01</span></div><div class="line">num_steps = <span class="number">1000</span></div><div class="line">batch_size = <span class="number">128</span></div><div class="line">display_step = <span class="number">100</span></div><div class="line">num_layer_1 = <span class="number">256</span></div><div class="line">num_layer_2 = <span class="number">128</span></div><div class="line">num_features = <span class="number">784</span></div><div class="line">num_classes = <span class="number">10</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Define the Dnn structure</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">DNN</span><span class="params">(input_data_)</span>:</span></div><div class="line">    input_data = input_data_[<span class="string">'images'</span>]</div><div class="line">    layer1 = tf.layers.dense(input_data, num_layer_1, activation=tf.nn.relu)</div><div class="line">    layer2 = tf.layers.dense(layer1, num_layer_2, activation=tf.nn.relu)</div><div class="line">    output = tf.layers.dense(layer2, num_classes)</div><div class="line">    <span class="keyword">return</span> output</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># define the model_fn</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_fn</span><span class="params">(features, labels, mode)</span>:</span></div><div class="line">    <span class="comment"># build the dnn</span></div><div class="line">    logits = DNN(features)</div><div class="line"></div><div class="line">    <span class="comment"># predict</span></div><div class="line">    predicted_class = tf.argmax(logits, <span class="number">1</span>)</div><div class="line">    pred_prob = tf.nn.softmax(logits)</div><div class="line"></div><div class="line">    <span class="comment"># prediction mode</span></div><div class="line">    <span class="keyword">if</span> mode == tf.estimator.ModeKeys.PREDICT:</div><div class="line">        <span class="keyword">return</span> tf.estimator.EstimatorSpec(mode=mode, predictions=predicted_class)</div><div class="line"></div><div class="line">    <span class="comment"># loss and optimizer</span></div><div class="line">    loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=tf.cast(labels, tf.int32)))</div><div class="line">    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)</div><div class="line">    train_op = optimizer.minimize(loss_op, global_step=tf.train.get_global_step())</div><div class="line"></div><div class="line">    <span class="comment"># evaluate</span></div><div class="line">    accuracy = tf.metrics.accuracy(labels=labels, predictions=predicted_class)</div><div class="line"></div><div class="line">    estim_specs = tf.estimator.EstimatorSpec(</div><div class="line">        mode=mode,</div><div class="line">        predictions=predicted_class,</div><div class="line">        loss=loss_op,</div><div class="line">        train_op=train_op,</div><div class="line">        eval_metric_ops=&#123;<span class="string">'accuracy'</span>: accuracy&#125;</div><div class="line">    )</div><div class="line">    <span class="keyword">return</span> estim_specs</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># main</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># init</span></div><div class="line">    model = tf.estimator.Estimator(model_fn=model_fn)</div><div class="line"></div><div class="line">    <span class="comment"># Define the training input</span></div><div class="line">    train_input = tf.estimator.inputs.numpy_input_fn(</div><div class="line">        x=&#123;<span class="string">'images'</span>: mnist.train.images&#125;,</div><div class="line">        y=mnist.train.labels,</div><div class="line">        batch_size=batch_size,</div><div class="line">        num_epochs=<span class="keyword">None</span>,</div><div class="line">        shuffle=<span class="keyword">True</span></div><div class="line">    )</div><div class="line"></div><div class="line">    <span class="comment"># train the model</span></div><div class="line">    model.train(input_fn=train_input, steps=num_steps)</div><div class="line"></div><div class="line">    <span class="comment"># evaluate step</span></div><div class="line">    eval_input = tf.estimator.inputs.numpy_input_fn(</div><div class="line">        x=&#123;<span class="string">'images'</span>: mnist.test.images&#125;,</div><div class="line">        y=mnist.test.labels,</div><div class="line">        batch_size=batch_size,</div><div class="line">        num_epochs=<span class="number">1</span>,</div><div class="line">        shuffle=<span class="keyword">False</span></div><div class="line">    )</div><div class="line"></div><div class="line">    <span class="comment"># evaluate the model</span></div><div class="line">    e = model.evaluate(input_fn=eval_input)</div><div class="line"></div><div class="line">    print(<span class="string">"From test set accu: "</span>, e[<span class="string">'accuracy'</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>xz</p>
+<p>:)</p>
 
       
     </div>
@@ -462,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/01/Git与Github/" rel="next" title="Git与Github">
-                <i class="fa fa-chevron-left"></i> Git与Github
+              <a href="/2018/01/09/TensorFlow-05-tf-estimator/" rel="next" title="TensorFlow_05: tf.estimator">
+                <i class="fa fa-chevron-left"></i> TensorFlow_05: tf.estimator
               </a>
             
           </div>
@@ -471,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/07/TensorFlow-02-Logistic-Regression/" rel="prev" title="TensorFlow_02: Logistic Regression">
-                TensorFlow_02: Logistic Regression <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Regression-using-TensorFlow"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression using TensorFlow</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-hidden-layers’-DNN-using-tf-estimator"><span class="nav-number">1.</span> <span class="nav-text">2 hidden layers’ DNN using tf.estimator</span></a></li></ol></div>
             
 
           </div>
@@ -838,9 +835,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.enningxie.com/2018/01/06/TensorFlow-01-Linear-Regression/';
-          this.page.identifier = '2018/01/06/TensorFlow-01-Linear-Regression/';
-          this.page.title = 'TensorFlow_01: Linear Regression.';
+          this.page.url = 'http://www.enningxie.com/2018/01/09/TensorFlow-06-DNN-base-on-estimator/';
+          this.page.identifier = '2018/01/09/TensorFlow-06-DNN-base-on-estimator/';
+          this.page.title = 'TensorFlow_06: DNN(base on estimator)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://enningxie.disqus.com/embed.js';
