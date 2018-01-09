@@ -133,18 +133,18 @@
 
 
 
-<meta name="description" content="Polynomial_regression using tensorflow.1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# Polynomial_regressionimport tensorflow as tf">
+<meta name="description" content="CNN using tensorflow (raw).12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TensorFlow_03: Polynomial_regression">
-<meta property="og:url" content="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/index.html">
+<meta property="og:title" content="TensorFlow_07: CNN(raw)">
+<meta property="og:url" content="http://www.enningxie.com/2018/01/09/TensorFlow-07-CNN-raw/index.html">
 <meta property="og:site_name" content="Coolixz">
-<meta property="og:description" content="Polynomial_regression using tensorflow.1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# Polynomial_regressionimport tensorflow as tf">
+<meta property="og:description" content="CNN using tensorflow (raw).12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-08T07:19:42.503Z">
+<meta property="og:updated_time" content="2018-01-09T13:45:38.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TensorFlow_03: Polynomial_regression">
-<meta name="twitter:description" content="Polynomial_regression using tensorflow.1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162# Polynomial_regressionimport tensorflow as tf">
+<meta name="twitter:title" content="TensorFlow_07: CNN(raw)">
+<meta name="twitter:description" content="CNN using tensorflow (raw).12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091">
 
 
 
@@ -174,13 +174,13 @@
 
 
 
-  <link rel="canonical" href="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/"/>
+  <link rel="canonical" href="http://www.enningxie.com/2018/01/09/TensorFlow-07-CNN-raw/"/>
 
 
 
 
 
-  <title>TensorFlow_03: Polynomial_regression | Coolixz</title>
+  <title>TensorFlow_07: CNN(raw) | Coolixz</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/09/TensorFlow-07-CNN-raw/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="enningxie">
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TensorFlow_03: Polynomial_regression</h1>
+          <h1 class="post-title" itemprop="name headline">TensorFlow_07: CNN(raw)</h1>
         
 
         <div class="post-meta">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T09:46:22+08:00">
-                2018-01-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T21:44:31+08:00">
+                2018-01-09
               </time>
             
 
@@ -395,9 +395,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/08/TensorFlow-03-Polynomial-regression/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/09/TensorFlow-07-CNN-raw/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/08/TensorFlow-03-Polynomial-regression/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/09/TensorFlow-07-CNN-raw/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -430,8 +430,9 @@
       
 
       
-        <h4 id="Polynomial-regression-using-tensorflow"><a href="#Polynomial-regression-using-tensorflow" class="headerlink" title="Polynomial_regression using tensorflow."></a>Polynomial_regression using tensorflow.</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Polynomial_regression</span></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line">learning_rate = <span class="number">0.01</span></div><div class="line">training_epochs = <span class="number">100</span></div><div class="line"></div><div class="line"><span class="comment"># fake data</span></div><div class="line">trX = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">101</span>)</div><div class="line"></div><div class="line">num_coeffs = <span class="number">6</span></div><div class="line">trY_coeffs = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">trY = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">    trY += trY_coeffs[i] * np.power(trX, i)</div><div class="line"></div><div class="line"><span class="comment"># add some noise</span></div><div class="line">trY += np.random.randn(*trX.shape) * <span class="number">1.5</span></div><div class="line"></div><div class="line"><span class="comment"># plot the fake data</span></div><div class="line">plt.scatter(trX, trY)</div><div class="line"><span class="comment"># plt.show()</span></div><div class="line"></div><div class="line"><span class="comment"># placeholder</span></div><div class="line">X = tf.placeholder(tf.float32)</div><div class="line">Y = tf.placeholder(tf.float32)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># model</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(X, w)</span>:</span></div><div class="line">    terms = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">        term = tf.multiply(w[i], tf.pow(X, i))</div><div class="line">        terms.append(term)</div><div class="line">    <span class="keyword">return</span> tf.add_n(terms)</div><div class="line"></div><div class="line"></div><div class="line">w = tf.Variable([<span class="number">0.</span>] * num_coeffs, name=<span class="string">"parameters"</span>)</div><div class="line">y_model = model(X, w)</div><div class="line"></div><div class="line">cost = tf.reduce_mean(tf.square(Y-y_model))</div><div class="line">train_op = tf.train.AdamOptimizer(learning_rate).minimize(cost)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(tf.global_variables_initializer())</div><div class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(training_epochs):</div><div class="line">        total_loss = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span>(x, y) <span class="keyword">in</span> zip(trX, trY):</div><div class="line">            loss, _ = sess.run([cost, train_op], feed_dict=&#123;X: x, Y: y&#125;)</div><div class="line">            total_loss += loss</div><div class="line">        print(<span class="string">"epoch: &#123;0&#125;, loss: &#123;1&#125;."</span>.format(epoch+<span class="number">1</span>, total_loss/<span class="number">101</span>))</div><div class="line">    w_val = sess.run(w)</div><div class="line">    print(<span class="string">"--------"</span>)</div><div class="line">    print(<span class="string">"w: "</span>, w_val)</div><div class="line">    trY2 = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_coeffs):</div><div class="line">        trY2 += w_val[i] * np.power(trX, i)</div><div class="line">    plt.scatter(trX, trY)</div><div class="line">    plt.plot(trX, trY2)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
-<p>xz<br>:)</p>
+        <h3 id="CNN-using-tensorflow-raw"><a href="#CNN-using-tensorflow-raw" class="headerlink" title="CNN using tensorflow (raw)."></a>CNN using tensorflow (raw).</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cnn using tensorflow</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import</div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div><div class="line"></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line"><span class="comment"># input mnist's data</span></div><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line">mnist = input_data.read_data_sets(<span class="string">"/home/enningxie/Documents/DataSets/mnist/"</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># parameters</span></div><div class="line">learning_rate = <span class="number">0.001</span></div><div class="line">num_steps = <span class="number">2</span></div><div class="line">batch_size = <span class="number">128</span></div><div class="line">display_step = <span class="number">1</span></div><div class="line">num_features = <span class="number">784</span></div><div class="line">num_classes = <span class="number">10</span></div><div class="line">dropout = <span class="number">0.75</span></div><div class="line"></div><div class="line"><span class="comment"># placeholder</span></div><div class="line">X = tf.placeholder(tf.float32, [<span class="keyword">None</span>, num_features])</div><div class="line">Y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, num_classes])</div><div class="line">keep_prob = tf.placeholder(tf.float32)  <span class="comment"># dropout(keep prob)</span></div><div class="line"></div><div class="line"><span class="comment"># weights and biases</span></div><div class="line">weights = &#123;</div><div class="line">    <span class="comment"># 5x5 conv, 1 inputs, 32 outputs</span></div><div class="line">    <span class="string">'wc1'</span>: tf.Variable(initial_value=tf.truncated_normal([<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>])),</div><div class="line">    <span class="comment"># 5x5 conv, 32 inputs, 64 outputs</span></div><div class="line">    <span class="string">'wc2'</span>: tf.Variable(initial_value=tf.truncated_normal([<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>])),</div><div class="line">    <span class="comment"># fully connected, 7*7*64 inputs, 1024 outputs</span></div><div class="line">    <span class="string">'wd1'</span>: tf.Variable(initial_value=tf.truncated_normal([<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>])),</div><div class="line">    <span class="comment"># 1024 inputs, 10 outputs (class prediction)</span></div><div class="line">    <span class="string">'out'</span>: tf.Variable(initial_value=tf.truncated_normal([<span class="number">1024</span>, num_classes]))</div><div class="line">&#125;</div><div class="line"></div><div class="line">biases = &#123;</div><div class="line">    <span class="string">'bc1'</span>: tf.Variable(tf.random_normal([<span class="number">32</span>])),</div><div class="line">    <span class="string">'bc2'</span>: tf.Variable(tf.random_normal([<span class="number">64</span>])),</div><div class="line">    <span class="string">'bd1'</span>: tf.Variable(tf.random_normal([<span class="number">1024</span>])),</div><div class="line">    <span class="string">'out'</span>: tf.Variable(tf.random_normal([num_classes]))</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># conv</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W, b, strides=<span class="number">1</span>)</span>:</span></div><div class="line">    x = tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, strides, strides, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</div><div class="line">    x = tf.nn.bias_add(x, b)</div><div class="line">    <span class="keyword">return</span> tf.nn.relu(x)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># maxpool</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxpool2d</span><span class="params">(x, k=<span class="number">2</span>)</span>:</span></div><div class="line">    <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, k, k, <span class="number">1</span>], strides=[<span class="number">1</span>, k, k, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># create model</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_net</span><span class="params">(x, weights, biases, dropout)</span>:</span></div><div class="line">    x = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])</div><div class="line"></div><div class="line">    <span class="comment"># conv1</span></div><div class="line">    conv1 = conv2d(x, weights[<span class="string">'wc1'</span>], biases[<span class="string">'bc1'</span>])</div><div class="line">    <span class="comment"># maxpool</span></div><div class="line">    conv1_ = maxpool2d(conv1)</div><div class="line"></div><div class="line">    <span class="comment"># conv2</span></div><div class="line">    conv2 = conv2d(conv1_, weights[<span class="string">'wc2'</span>], biases[<span class="string">'bc2'</span>])</div><div class="line">    <span class="comment"># maxpool</span></div><div class="line">    conv2_ = maxpool2d(conv2)</div><div class="line"></div><div class="line">    <span class="comment"># dense layer</span></div><div class="line">    fc = tf.reshape(conv2_, [<span class="number">-1</span>, weights[<span class="string">'wd1'</span>].shape.as_list()[<span class="number">0</span>]])</div><div class="line">    fc = tf.add(tf.matmul(fc, weights[<span class="string">'wd1'</span>]), biases[<span class="string">'bd1'</span>])</div><div class="line">    fc = tf.nn.relu(fc)</div><div class="line"></div><div class="line">    <span class="comment"># add dropout</span></div><div class="line">    fc = tf.nn.dropout(fc, dropout)</div><div class="line"></div><div class="line">    <span class="comment"># output</span></div><div class="line">    output = tf.add(tf.matmul(fc, weights[<span class="string">'out'</span>]), biases[<span class="string">'out'</span>])</div><div class="line">    <span class="keyword">return</span> output</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># main</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    logits = conv_net(X, weights, biases, keep_prob)</div><div class="line">    pred = tf.nn.softmax(logits)</div><div class="line"></div><div class="line">    loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y))</div><div class="line">    optimizer = tf.train.AdamOptimizer(learning_rate)</div><div class="line">    train_op = optimizer.minimize(loss_op)</div><div class="line"></div><div class="line">    accuracy = tf.equal(tf.argmax(pred, <span class="number">1</span>), tf.argmax(Y, <span class="number">1</span>))</div><div class="line">    accuracy_op = tf.reduce_mean(tf.cast(accuracy, tf.float32))</div><div class="line"></div><div class="line">    init_op = tf.global_variables_initializer()</div><div class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">        sess.run(init_op)</div><div class="line">        num_batch = int(mnist.train.num_examples/batch_size)</div><div class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> range(num_steps):</div><div class="line">            total_loss = <span class="number">0</span></div><div class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(num_batch):</div><div class="line">                batch_x, batch_y = mnist.train.next_batch(batch_size)</div><div class="line">                _, loss = sess.run([train_op, loss_op], feed_dict=&#123;X: batch_x, Y: batch_y, keep_prob: dropout&#125;)</div><div class="line">                total_loss += loss / num_batch</div><div class="line">            <span class="keyword">if</span> (step+<span class="number">1</span>) % display_step == <span class="number">0</span>:</div><div class="line">                print(<span class="string">"step: "</span>, str(step+<span class="number">1</span>), <span class="string">", loss: "</span>, str(total_loss))</div><div class="line">        print(<span class="string">"training end."</span>)</div><div class="line">        acc = sess.run(accuracy_op, feed_dict=&#123;X: mnist.test.images[:<span class="number">256</span>], Y: mnist.test.labels[:<span class="number">256</span>], keep_prob: <span class="number">1.</span>&#125;)</div><div class="line">        print(<span class="string">"Test acc: "</span>, acc)</div><div class="line">        print(<span class="string">"done."</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>xz</p>
+<p>:)</p>
 
       
     </div>
@@ -462,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/07/TensorFlow-02-Logistic-Regression/" rel="next" title="TensorFlow_02: Logistic Regression">
-                <i class="fa fa-chevron-left"></i> TensorFlow_02: Logistic Regression
+              <a href="/2018/01/09/TensorFlow-06-DNN-base-on-estimator/" rel="next" title="TensorFlow_06: DNN(base on estimator)">
+                <i class="fa fa-chevron-left"></i> TensorFlow_06: DNN(base on estimator)
               </a>
             
           </div>
@@ -471,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/08/TensorFlow-04-DNN/" rel="prev" title="TensorFlow_04: DNN">
-                TensorFlow_04: DNN <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Polynomial-regression-using-tensorflow"><span class="nav-number">1.</span> <span class="nav-text">Polynomial_regression using tensorflow.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CNN-using-tensorflow-raw"><span class="nav-number">1.</span> <span class="nav-text">CNN using tensorflow (raw).</span></a></li></ol></div>
             
 
           </div>
@@ -838,9 +835,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://www.enningxie.com/2018/01/08/TensorFlow-03-Polynomial-regression/';
-          this.page.identifier = '2018/01/08/TensorFlow-03-Polynomial-regression/';
-          this.page.title = 'TensorFlow_03: Polynomial_regression';
+          this.page.url = 'http://www.enningxie.com/2018/01/09/TensorFlow-07-CNN-raw/';
+          this.page.identifier = '2018/01/09/TensorFlow-07-CNN-raw/';
+          this.page.title = 'TensorFlow_07: CNN(raw)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://enningxie.disqus.com/embed.js';
