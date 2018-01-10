@@ -324,6 +324,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/10/TensorFlow-08-CNN-tf-estimator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="enningxie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/xz.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coolixz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/10/TensorFlow-08-CNN-tf-estimator/" itemprop="url">TensorFlow_08: CNN(tf.estimator)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-10T10:37:50+08:00">
+                2018-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
+                    <span itemprop="name">TensorFlow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/10/TensorFlow-08-CNN-tf-estimator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/10/TensorFlow-08-CNN-tf-estimator/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="CNN-using-tf-estimator"><a href="#CNN-using-tf-estimator" class="headerlink" title="CNN using tf.estimator"></a>CNN using <code>tf.estimator</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cnn using tf.estimator</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> absolute_import</div><div class="line"></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line">tf.logging.set_verbosity(tf.logging.INFO)  <span class="comment"># for logging</span></div><div class="line"></div><div class="line"><span class="comment"># mnist</span></div><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line">mnist = input_data.read_data_sets(<span class="string">"/home/enningxie/Documents/DataSets/mnist/"</span>, one_hot=<span class="keyword">False</span>)</div><div class="line"></div><div class="line"><span class="comment"># paramters</span></div><div class="line">num_steps = <span class="number">1000</span></div><div class="line">learning_rate = <span class="number">0.001</span></div><div class="line">droupout_train = <span class="number">0.25</span></div><div class="line">batch_size = <span class="number">128</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># cnn model</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">CNN</span><span class="params">(input, reuse, keep_prob=<span class="number">0.0</span>, is_training=False)</span>:</span></div><div class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"cnn"</span>, reuse=reuse):</div><div class="line">        input_data = tf.reshape(input[<span class="string">'images'</span>], [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>])</div><div class="line">        conv1 = tf.layers.conv2d(input_data, <span class="number">32</span>, (<span class="number">5</span>, <span class="number">5</span>), padding=<span class="string">'SAME'</span>, activation=tf.nn.relu)</div><div class="line">        maxpool1 = tf.layers.max_pooling2d(conv1, (<span class="number">2</span>, <span class="number">2</span>), (<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">'SAME'</span>)</div><div class="line">        conv2 = tf.layers.conv2d(maxpool1, <span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>), padding=<span class="string">'SAME'</span>, activation=tf.nn.relu)</div><div class="line">        maxpool2 = tf.layers.max_pooling2d(conv2, (<span class="number">2</span>, <span class="number">2</span>), (<span class="number">2</span>, <span class="number">2</span>), padding=<span class="string">'SAME'</span>)</div><div class="line">        dense_input = tf.contrib.layers.flatten(maxpool2)</div><div class="line">        dense1 = tf.layers.dense(dense_input, <span class="number">1024</span>, activation=tf.nn.relu)</div><div class="line">        droupout_ = tf.layers.dropout(dense1, rate=keep_prob, training=is_training)</div><div class="line">        output = tf.layers.dense(droupout_, <span class="number">10</span>)</div><div class="line">    <span class="keyword">return</span> output</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># def model_fn</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model_fn</span><span class="params">(features, labels, mode)</span>:</span></div><div class="line">    logits = CNN(features, keep_prob=droupout_train, is_training=<span class="keyword">True</span>, reuse=<span class="keyword">False</span>)  <span class="comment"># reuse - False</span></div><div class="line">    logits_ = CNN(features, reuse=<span class="keyword">True</span>)  <span class="comment"># reuse - True</span></div><div class="line">    pred = tf.nn.softmax(logits_)</div><div class="line">    pred_classes = tf.argmax(pred, <span class="number">1</span>)</div><div class="line"></div><div class="line">    <span class="comment"># prediction mode</span></div><div class="line">    <span class="keyword">if</span> mode == tf.estimator.ModeKeys.PREDICT:</div><div class="line">        <span class="keyword">return</span> tf.estimator.EstimatorSpec(mode=mode, predictions=&#123;<span class="string">"pred"</span>: pred_classes&#125;)</div><div class="line"></div><div class="line">    <span class="comment"># loss_op</span></div><div class="line">    loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=tf.cast(labels, tf.int32)))</div><div class="line">    optimizer = tf.train.AdamOptimizer(learning_rate)</div><div class="line">    <span class="comment"># train_op</span></div><div class="line">    train_op = optimizer.minimize(loss_op, global_step=tf.train.get_global_step())  <span class="comment"># get global step for logging</span></div><div class="line"></div><div class="line">    <span class="comment"># acc_op</span></div><div class="line">    acc_op = tf.metrics.accuracy(labels=labels, predictions=pred_classes)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> tf.estimator.EstimatorSpec(</div><div class="line">            mode=mode,</div><div class="line">            loss=loss_op,</div><div class="line">            train_op=train_op,</div><div class="line">            eval_metric_ops=&#123;<span class="string">"acc"</span>: acc_op&#125;</div><div class="line">    )</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># main</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    model = tf.estimator.Estimator(model_fn=model_fn)</div><div class="line"></div><div class="line">    <span class="comment"># train</span></div><div class="line">    train_input = tf.estimator.inputs.numpy_input_fn(</div><div class="line">        x=&#123;<span class="string">'images'</span>: mnist.train.images&#125;,</div><div class="line">        y=mnist.train.labels,</div><div class="line">        batch_size=batch_size,</div><div class="line">        num_epochs=<span class="keyword">None</span>,</div><div class="line">        shuffle=<span class="keyword">True</span></div><div class="line">    )</div><div class="line">    model.train(input_fn=train_input, steps=num_steps)</div><div class="line"></div><div class="line">    <span class="comment"># eval</span></div><div class="line">    eval_input = tf.estimator.inputs.numpy_input_fn(</div><div class="line">        x=&#123;<span class="string">'images'</span>: mnist.test.images&#125;,</div><div class="line">        y=mnist.test.labels,</div><div class="line">        num_epochs=<span class="number">1</span>,</div><div class="line">        shuffle=<span class="keyword">False</span></div><div class="line">    )</div><div class="line">    eval = model.evaluate(input_fn=eval_input)</div><div class="line">    print(<span class="string">"test acc: "</span>, eval[<span class="string">'acc'</span>])</div><div class="line"></div><div class="line">    <span class="comment"># pred</span></div><div class="line">    predict_input = tf.estimator.inputs.numpy_input_fn(</div><div class="line">        x=&#123;<span class="string">'images'</span>: mnist.test.images[:<span class="number">5</span>]&#125;,</div><div class="line">        num_epochs=<span class="number">1</span>,</div><div class="line">        shuffle=<span class="keyword">False</span></div><div class="line">    )</div><div class="line">    pred = model.predict(input_fn=predict_input)</div><div class="line">    <span class="keyword">for</span> i, p <span class="keyword">in</span> enumerate(pred):</div><div class="line">        print(<span class="string">"num: "</span>, str(i+<span class="number">1</span>), <span class="string">", pred: "</span>, str(p[<span class="string">'pred'</span>]))</div><div class="line"></div><div class="line">    <span class="comment"># end</span></div><div class="line">    print(<span class="string">'end.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>xz</p>
+<p>:)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2018/01/09/TensorFlow-07-CNN-raw/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1717,163 +1872,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.enningxie.com/2017/12/13/opencv/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="enningxie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/xz.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coolixz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/13/opencv/" itemprop="url">opencv</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T16:59:51+08:00">
-                2017-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/13/opencv/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/13/opencv/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="安装opencv"><a href="#安装opencv" class="headerlink" title="安装opencv"></a>安装opencv</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/13/opencv/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1928,7 +1926,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
